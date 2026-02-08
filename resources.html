@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore free resources from Life in Darkness: self-assessments, resource library, and community forum.">
+  <title>Explore Resources | Life in Darkness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+.res-tabs{display:flex;justify-content:center;gap:.5rem;padding:2rem 1.5rem 0;max-width:800px;margin:0 auto}
+.res-tab{padding:.7rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(42,37,32,.15);background:transparent;color:var(--text-dark);border-radius:2px;cursor:pointer;transition:all .3s}
+.res-tab:hover{border-color:var(--lid-green);color:var(--lid-green)}
+.res-tab.active{background:var(--lid-green);color:var(--white);border-color:var(--lid-green)}
+.res-panel{display:none}.res-panel.active{display:block}
+.assessment-card{max-width:700px;margin:2rem auto 0;background:var(--white);border-radius:4px;box-shadow:0 4px 24px rgba(0,0,0,.04);overflow:hidden}
+.assessment-progress{height:4px;background:rgba(42,37,32,.08)}
+.assessment-progress-fill{height:100%;width:0;background:var(--lid-green);transition:width .4s ease}
+.assessment-body{padding:2.5rem}
+.question-counter{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--lid-green);margin-bottom:1.5rem}
+.question-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text-dark);line-height:1.4;margin-bottom:2rem}
+.options{display:flex;flex-direction:column;gap:.35rem}
+.option-btn,.option{display:block;width:100%;padding:1rem 1.25rem;text-align:left;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text-dark);background:var(--white);border:1px solid rgba(42,37,32,.15);border-radius:4px;cursor:pointer;transition:all .2s}
+.option-btn:hover,.option:hover{border-color:var(--lid-green);background:var(--lid-green-tint)}
+.option-btn.selected,.option.selected{border-color:var(--lid-green);background:var(--lid-green);color:var(--white)}
+.assessment-nav{display:flex;justify-content:space-between;margin-top:2rem;gap:1rem}
+.btn-back,.btn-next,.btn-retake,.btn-join{padding:.8rem 2rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:all .3s}
+.btn-next,.btn-submit{background:var(--lid-green);color:var(--white);margin-left:auto}
+.btn-next:disabled{opacity:.4;cursor:not-allowed}
+.btn-next:not(:disabled):hover{background:var(--lid-green-light)}
+.btn-back{background:transparent;color:var(--text-dark);border:1px solid rgba(42,37,32,.15)}
+.btn-back:hover{border-color:var(--lid-green);color:var(--lid-green)}
+.btn-retake{background:transparent;color:var(--lid-green);border:1px solid var(--lid-green);margin-top:1.5rem}
+.btn-retake:hover{background:var(--lid-green);color:var(--white)}
+.hidden{display:none!important}
+.results-container{display:none;text-align:center}.results-container.active{display:block}
+.results-header h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--text-dark)}
+.results-header p{color:var(--text-mid);margin-top:.5rem}
+.score-ring{position:relative;width:160px;height:160px;margin:2rem auto}
+.score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring .bg{fill:none;stroke:rgba(42,37,32,.08);stroke-width:8}
+.score-ring .fill{fill:none;stroke:var(--lid-green);stroke-width:8;stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440;transition:stroke-dashoffset 1.5s ease}
+.score-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.score-label .number{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:500;color:var(--lid-green)}
+.score-label .of{font-size:.75rem;color:var(--text-mid)}
+.pillar-scores{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;text-align:left}
+.pillar-row{display:flex;align-items:center;gap:1rem}
+.pillar-name{width:180px;font-size:.85rem;font-weight:500;color:var(--text-dark);text-align:right}
+.pillar-bar-bg{flex:1;height:8px;background:rgba(42,37,32,.08);border-radius:4px;overflow:hidden}
+.pillar-bar-fill{height:100%;background:var(--lid-green);border-radius:4px;transition:width 1s ease}
+.pillar-val{width:40px;font-size:.8rem;color:var(--lid-green);font-weight:600}
+.results-message{margin-top:2rem;padding:1.5rem;background:var(--lid-green-tint);border-radius:4px;text-align:left}
+.results-message h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--lid-green);margin-bottom:.5rem}
+.results-message p{font-size:.9rem;line-height:1.6;color:var(--text-dark)}
+.filter-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:2rem 0}
+.filter-btn{padding:.5rem 1.25rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(42,37,32,.12);background:transparent;color:var(--text-dark);border-radius:2px;cursor:pointer;transition:all .3s}
+.filter-btn:hover{border-color:var(--lid-green);color:var(--lid-green)}
+.filter-btn.active{background:var(--lid-green);color:var(--white);border-color:var(--lid-green)}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.resource-card{background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;overflow:hidden;transition:all .3s}
+.resource-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.resource-card-top{height:4px}
+.resource-card-top.grief{background:var(--lid-green)}
+.resource-card-top.resilience{background:var(--warm-gold)}
+.resource-card-top.family{background:#7a6e5d}
+.resource-card-top.faith{background:#8b6fa3}
+.resource-card-top.veterans{background:#5a7a8b}
+.resource-card-body{padding:1.75rem}
+.resource-tag{display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--lid-green);background:var(--lid-green-tint);padding:.25rem .6rem;border-radius:2px;margin-bottom:.75rem}
+.resource-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--text-dark);margin-bottom:.5rem}
+.resource-card p{font-size:.85rem;line-height:1.6;color:var(--text-mid)}
+.resource-type{display:flex;align-items:center;gap:.4rem;margin-top:1rem;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-gold)}
+.resource-type svg{width:16px;height:16px}
+.resource-meta{display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.resource-link{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--lid-green);text-decoration:none;letter-spacing:.04em}
+.resource-link:hover{text-decoration:underline}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeIn .4s ease forwards;opacity:0}
+.community-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.forum-card{background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:1.75rem;transition:all .3s}
+.forum-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.forum-icon{width:40px;height:40px;margin-bottom:1rem}
+.forum-icon svg{width:100%;height:100%;fill:none;stroke:var(--lid-green);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.forum-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--text-dark);margin-bottom:.5rem}
+.forum-card p{font-size:.85rem;line-height:1.6;color:var(--text-mid)}
+.forum-stats{display:flex;gap:1.25rem;margin-top:1rem}
+.forum-stat{display:flex;align-items:center;gap:.35rem;font-size:.7rem;font-weight:500;color:var(--text-mid)}
+.forum-stat svg{width:14px;height:14px;fill:none;stroke:var(--lid-green);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.join-banner{margin-top:3rem;padding:3rem;background:var(--lid-green);border-radius:4px;text-align:center;color:var(--white)}
+.join-banner h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:.75rem}
+.join-banner p{font-size:.95rem;opacity:.85;margin-bottom:1.5rem}
+.btn-join{background:var(--white);color:var(--lid-green);padding:.8rem 2rem;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-join:hover{background:var(--cream)}
+.forum-card{cursor:pointer}
+/* Forum Detail View */
+.forum-detail{display:none}
+.forum-detail.active{display:block}
+.community-main{display:block}
+.community-main.hidden{display:none}
+.forum-back{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;color:var(--lid-green);cursor:pointer;background:none;border:none;padding:.5rem 0;margin-bottom:1rem;transition:opacity .2s}
+.forum-back:hover{opacity:.7}
+.forum-detail-header{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(42,37,32,.08);text-align:center}
+.forum-detail-header h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--text-dark)}
+.forum-detail-header p{color:var(--text-mid);margin-top:.5rem;max-width:600px;margin-left:auto;margin-right:auto}
+.forum-detail-stats{display:flex;justify-content:center;gap:2rem;margin-top:1rem}
+.forum-detail-stats .forum-stat{font-size:.8rem}
+/* New Thread */
+.new-thread-form{background:var(--white);border:1px solid rgba(42,37,32,.1);border-radius:4px;padding:2rem;margin-bottom:2.5rem}
+.new-thread-form h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--lid-green);margin-bottom:1.25rem}
+.new-thread-form input,.new-thread-form textarea{width:100%;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);outline:none;transition:border-color .3s;box-sizing:border-box;margin-top:.75rem}
+.new-thread-form input:focus,.new-thread-form textarea:focus{border-color:var(--lid-green)}
+.new-thread-form textarea{min-height:80px;resize:vertical;margin-top:.75rem}
+.new-thread-form button{margin-top:.75rem;padding:.6rem 1.5rem;background:var(--lid-green);color:var(--white);border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.new-thread-form button:hover{background:var(--lid-green-light)}
+/* Thread Cards */
+.thread-list{display:flex;flex-direction:column;gap:1.25rem}
+.thread-card{background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:1.75rem;cursor:pointer;transition:all .2s}
+.thread-card:hover{border-color:var(--lid-green);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.thread-card h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;color:var(--text-dark);margin-bottom:.35rem}
+.thread-card p{font-size:.85rem;color:var(--text-mid);line-height:1.5}
+.thread-meta{display:flex;gap:1.5rem;margin-top:.75rem;font-size:.7rem;color:var(--text-mid)}
+.thread-meta span{display:flex;align-items:center;gap:.3rem}
+/* Thread Detail / Comments */
+.thread-view{display:none}
+.thread-view.active{display:block}
+.thread-list-view{display:block}
+.thread-list-view.hidden{display:none}
+.thread-view-header{margin-bottom:1.5rem}
+.thread-view-header h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text-dark)}
+.thread-view-header p{font-size:.9rem;color:var(--text-mid);line-height:1.6;margin-top:.75rem}
+.thread-view-meta{font-size:.7rem;color:var(--text-mid);margin-top:.5rem}
+.comment-list{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.comment{background:var(--white);border:1px solid rgba(42,37,32,.06);border-radius:4px;padding:1.25rem}
+.comment-author{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--lid-green)}
+.comment-time{font-size:.7rem;color:var(--text-mid);margin-left:.5rem;font-weight:400}
+.comment-text{font-size:.9rem;color:var(--text-dark);line-height:1.6;margin-top:.5rem}
+.comment-form{margin-top:1.5rem;background:var(--white);border:1px solid rgba(42,37,32,.1);border-radius:4px;padding:1.25rem}
+.comment-form h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--lid-green);margin-bottom:.75rem}
+.comment-form input{width:100%;padding:.6rem .75rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);outline:none;margin-bottom:.5rem;box-sizing:border-box}
+.comment-form textarea{width:100%;padding:.6rem .75rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);outline:none;min-height:80px;resize:vertical;box-sizing:border-box}
+.comment-form input:focus,.comment-form textarea:focus{border-color:var(--lid-green)}
+.comment-form button{margin-top:.75rem;padding:.6rem 1.5rem;background:var(--lid-green);color:var(--white);border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.comment-form button:hover{background:var(--lid-green-light)}
+@media(max-width:768px){.res-tabs{flex-direction:column}.resource-grid,.community-grid{grid-template-columns:1fr}.pillar-name{width:120px;font-size:.75rem}}
+  </style>
+</head>
+<body>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div>
+    <div class="nav-logo-text">Life in <span>Darkness</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="help.html">Get Help</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="donate.html">Give</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="tel:988" class="nav-cta">Crisis Line: 988</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="section-label">Tools for Your Journey</div>
+    <h1>Explore <em>Resources</em></h1>
+    <p>Take a self-assessment, explore our resource library, or join our online community. Understanding what you're experiencing is the first step toward addressing it.</p>
+  </section>
+  <div class="res-tabs">
+    <button class="res-tab active" data-tab="assessment">Self-Assessment</button>
+    <button class="res-tab" data-tab="library">Resource Library</button>
+    <button class="res-tab" data-tab="community">Community Forum</button>
+  </div>
+  <section class="section section-warm res-panel active" id="assessment">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Emotional Portfolio™</div>
+      <div class="section-title" style="font-size:2rem;">Check-In Assessment</div>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">This brief self-assessment helps you understand where you are across five core dimensions of emotional and cognitive wellness. Your results are completely private.</p>
+      <div class="assessment-card">
+        <div class="assessment-progress"><div class="assessment-progress-fill" id="progressFill"></div></div>
+        <div class="assessment-body">
+          <div id="questionsContainer">
+            <div class="question-counter" id="questionCounter">Question 1 of 10</div>
+            <div class="question-text" id="questionText"></div>
+            <div class="options" id="optionsContainer"></div>
+            <div class="assessment-nav">
+              <button class="btn-back hidden" id="btnBack" onclick="prevQuestion()">← Back</button>
+              <button class="btn-next" id="btnNext" onclick="nextQuestion()" disabled>Continue</button>
+            </div>
+          </div>
+          <div class="results-container" id="resultsContainer">
+            <div class="results-header"><h2>Your Emotional Portfolio™ Snapshot</h2><p>Here's where you stand across the five pillars</p></div>
+            <div class="score-ring"><svg viewBox="0 0 160 160"><circle class="bg" cx="80" cy="80" r="70"/><circle class="fill" id="scoreCircle" cx="80" cy="80" r="70"/></svg><div class="score-label"><div class="number" id="totalScore">0</div><div class="of">out of 50</div></div></div>
+            <div class="pillar-scores" id="pillarScores"></div>
+            <div class="results-message" id="resultsMessage"></div>
+            <button class="btn-retake" onclick="retakeAssessment()">Retake Assessment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark res-panel" id="library">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Evidence-Based Tools</div>
+      <div class="section-title" style="font-size:2rem;">Resource Library</div>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Guides, worksheets, and tools to support your journey toward emotional and cognitive wellness.</p>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">All Resources</button>
+        <button class="filter-btn" data-filter="grief">Grief Recovery</button>
+        <button class="filter-btn" data-filter="resilience">Resilience</button>
+        <button class="filter-btn" data-filter="family">Family Healing</button>
+        <button class="filter-btn" data-filter="faith">Faith &amp; Stewardship</button>
+        <button class="filter-btn" data-filter="veterans">Veterans</button>
+      </div>
+      <div class="resource-grid" id="resourceGrid" style="text-align:left;"></div>
+    </div>
+  </section>
+  <section class="section section-warm res-panel" id="community">
+    <div class="container" style="text-align:center;">
+      <div id="communityHeader">
+        <div class="section-label">Find Your People</div>
+        <div class="section-title" style="font-size:2rem;">Community Forum</div>
+        <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Connect with others on the same journey. Share your story, ask questions, and find encouragement in a safe, moderated space.</p>
+      </div>
+
+      <!-- FORUM GRID (main view) -->
+      <div id="communityMain" class="community-main" style="text-align:left;">
+        <div class="community-grid" id="forumGrid"></div>
+        <div class="join-banner"><h2>Your Story Matters Here</h2><p>Join a community where vulnerability is strength and every voice is valued. No judgment — just real people, real healing.</p><button class="btn-join">Join the Community</button></div>
+      </div>
+
+      <!-- FORUM DETAIL (when you click into a forum) -->
+      <div id="forumDetail" class="forum-detail" style="text-align:left;">
+        <button class="forum-back" onclick="backToForums()">← Back to Forums</button>
+        <div class="forum-detail-header" id="forumDetailHeader"></div>
+
+        <!-- Thread List View -->
+        <div id="threadListView" class="thread-list-view">
+          <div class="new-thread-form">
+            <h4>Start a New Discussion</h4>
+            <input type="text" id="newThreadTitle" placeholder="Discussion title...">
+            <textarea id="newThreadBody" placeholder="Share your thoughts..."></textarea>
+            <input type="text" id="newThreadAuthor" placeholder="Your name (optional — you can stay anonymous)">
+            <button onclick="postThread()">Post Discussion</button>
+          </div>
+          <div class="thread-list" id="threadList"></div>
+        </div>
+
+        <!-- Thread View (comments) -->
+        <div id="threadView" class="thread-view">
+          <button class="forum-back" onclick="backToThreads()">← Back to Discussions</button>
+          <div class="thread-view-header" id="threadViewHeader"></div>
+          <div class="comment-list" id="commentList"></div>
+          <div class="comment-form">
+            <h4>Leave a Reply</h4>
+            <input type="text" id="commentAuthor" placeholder="Your name (optional — you can stay anonymous)">
+            <textarea id="commentBody" placeholder="Write your reply..."></textarea>
+            <button onclick="postComment()">Post Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="eqgenix-bridge"><div class="bridge-inner"><div><div class="bridge-logo">EQGenix</div><div class="bridge-logo-sub">Emotional &amp; Cognitive Wealth Advisors</div></div><div class="bridge-text"><p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. The result: a greater share of every donor dollar goes directly to program delivery and community access. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p></div></div></section>
+  <section class="newsletter"><h3>Stay Connected to the Light</h3><p>Mental health insights, community stories, and program updates, delivered with care.</p><div class="newsletter-form"><input type="email" placeholder="Your email address" aria-label="Email address"><button type="button">Subscribe</button></div></section>
+</main>
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><div style="display:flex;align-items:center;gap:.35rem"><div class="nav-logo-icon" style="width:24px;height:36px"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div><div class="nav-logo-text" style="font-size:1.1rem">Life in <span>Darkness</span></div></div><p>An independent 501(c)(3) nonprofit delivering evidence-based emotional and cognitive wellness programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p></div><div class="footer-col"><h4>Programs</h4><a href="programs.html#suicide-prevention">Suicide Prevention</a><a href="programs.html#grief-recovery">Grief Recovery</a><a href="programs.html#family-healing">Family Healing</a><a href="programs.html#youth-resiliency">Youth Resiliency</a><a href="programs.html#addiction-support">Addiction Support</a></div><div class="footer-col"><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="volunteer.html">Volunteer</a><a href="partners.html">Corporate Partners</a><a href="faith.html">Faith Communities</a></div><div class="footer-col"><h4>Connect</h4><a href="help.html">Get Help Now</a><a href="about.html">Our Story</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a></div></div><div class="footer-bottom"><p>&copy; 2024 Life in Darkness. All rights reserved. EIN: 33-1336378</p><div class="footer-powered">Core frameworks licensed from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a> &middot; Built, Not Downloaded.&trade;</div></div></footer>
+      <a href="resources.html#community">Community Forum</a>
+<script src="assets/js/main.js"></script>
+<script>
+// ══════════════════════════════════
+// SELF-ASSESSMENT ENGINE
+// ══════════════════════════════════
+const questions = [
+  {
+    pillar: 'Cognitive Sovereignty',
+    text: 'When faced with conflicting information or opinions, how do you typically respond?',
+    options: [
+      { text: 'I feel overwhelmed and avoid thinking about it', score: 1 },
+      { text: 'I tend to go with whatever feels right in the moment', score: 2 },
+      { text: 'I take time to consider different perspectives before deciding', score: 3 },
+      { text: 'I actively seek out evidence and form my own informed conclusion', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Cognitive Sovereignty',
+    text: 'How often do you rely on your own judgment rather than defaulting to AI tools or others\' opinions for important decisions?',
+    options: [
+      { text: 'Rarely — I usually ask others or search for the "right" answer', score: 1 },
+      { text: 'Sometimes, but I second-guess myself often', score: 2 },
+      { text: 'Usually — I trust my reasoning while seeking input when needed', score: 4 },
+      { text: 'Consistently — I use tools as aids, not replacements for my own thinking', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Emotional Regulation',
+    text: 'When you experience a strong negative emotion (anger, grief, anxiety), what happens next?',
+    options: [
+      { text: 'It takes over — I react before I can think', score: 1 },
+      { text: 'I try to suppress it and push through', score: 2 },
+      { text: 'I can name the emotion and give myself space to process it', score: 4 },
+      { text: 'I notice it, understand its source, and choose my response deliberately', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Emotional Regulation',
+    text: 'How do you handle disappointment or unmet expectations?',
+    options: [
+      { text: 'I spiral — it affects my whole day or week', score: 1 },
+      { text: 'I get frustrated but eventually move on without processing it', score: 2 },
+      { text: 'I allow myself to feel it, then look for what I can learn', score: 4 },
+      { text: 'I grieve the loss honestly while keeping perspective on the bigger picture', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Resilience Architecture',
+    text: 'After a significant setback, how quickly do you find your footing again?',
+    options: [
+      { text: 'I feel stuck for a long time and struggle to start over', score: 1 },
+      { text: 'It takes a while, but I eventually push myself to keep going', score: 2 },
+      { text: 'I recover relatively quickly by leaning on my support systems', score: 4 },
+      { text: 'I adapt and often find new strength or purpose through the challenge', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Resilience Architecture',
+    text: 'How would you describe your capacity to handle stress or adversity right now?',
+    options: [
+      { text: 'I\'m running on empty — even small things feel heavy', score: 1 },
+      { text: 'I\'m managing, but I feel stretched thin', score: 2 },
+      { text: 'I\'m in a steady place with room to handle unexpected challenges', score: 4 },
+      { text: 'I feel strong and grounded, even when things get difficult', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Relational Intelligence',
+    text: 'In your closest relationships, how well do you communicate during conflict?',
+    options: [
+      { text: 'I shut down, avoid, or explode — conflict feels unsafe', score: 1 },
+      { text: 'I try, but I often feel misunderstood or become defensive', score: 2 },
+      { text: 'I can express my needs and listen to theirs, even when it\'s hard', score: 4 },
+      { text: 'I navigate conflict as an opportunity for deeper understanding and trust', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Relational Intelligence',
+    text: 'How comfortable are you with vulnerability — sharing your real feelings or struggles with others?',
+    options: [
+      { text: 'Very uncomfortable — I keep things to myself', score: 1 },
+      { text: 'I share selectively but often regret being too open', score: 2 },
+      { text: 'I can be vulnerable with people I trust', score: 4 },
+      { text: 'I see vulnerability as strength and practice it intentionally', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Effort Tolerance',
+    text: 'When a goal requires sustained effort over months or years, how do you typically respond?',
+    options: [
+      { text: 'I start strong but lose motivation quickly', score: 1 },
+      { text: 'I push through with willpower, though I often feel burned out', score: 2 },
+      { text: 'I pace myself and have strategies to maintain motivation', score: 4 },
+      { text: 'I find deep purpose in the process itself, not just the outcome', score: 5 },
+    ]
+  },
+  {
+    pillar: 'Effort Tolerance',
+    text: 'How do you respond when a task is boring, tedious, or feels pointless?',
+    options: [
+      { text: 'I procrastinate or avoid it entirely', score: 1 },
+      { text: 'I force myself through it but resent every minute', score: 2 },
+      { text: 'I find ways to make it more engaging or break it into smaller parts', score: 4 },
+      { text: 'I connect it to a larger purpose and complete it with focus', score: 5 },
+    ]
+  },
+];
+
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('questionCounter').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+  document.getElementById('questionText').textContent = q.text;
+  document.getElementById('progressFill').style.width = `${((currentQ) / questions.length) * 100}%`;
+
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[currentQ] === i ? ' selected' : '');
+    div.innerHTML = `<span class="radio"></span>${opt.text}`;
+    div.onclick = () => selectOption(i);
+    container.appendChild(div);
+  });
+
+  document.getElementById('btnBack').classList.toggle('hidden', currentQ === 0);
+  const btnNext = document.getElementById('btnNext');
+  btnNext.disabled = answers[currentQ] === null;
+
+  if (currentQ === questions.length - 1) {
+    btnNext.textContent = 'See My Results';
+    btnNext.className = answers[currentQ] !== null ? 'btn-submit' : 'btn-next';
+  } else {
+    btnNext.textContent = 'Continue';
+    btnNext.className = 'btn-next';
+  }
+}
+
+function selectOption(i) {
+  answers[currentQ] = i;
+  document.querySelectorAll('.option').forEach((el, idx) => {
+    el.classList.toggle('selected', idx === i);
+  });
+  document.getElementById('btnNext').disabled = false;
+  if (currentQ === questions.length - 1) {
+    document.getElementById('btnNext').className = 'btn-submit';
+  }
+}
+
+function nextQuestion() {
+  if (answers[currentQ] === null) return;
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('questionsContainer').style.display = 'none';
+  document.getElementById('resultsContainer').style.display = 'block';
+  document.getElementById('progressFill').style.width = '100%';
+
+  const pillars = ['Cognitive Sovereignty', 'Emotional Regulation', 'Resilience Architecture', 'Relational Intelligence', 'Effort Tolerance'];
+  const colors = ['#2C3E2D', '#3A5139', '#C4A35E', '#8FA68F', '#7B8E7B'];
+  const pillarScores = {};
+  pillars.forEach(p => pillarScores[p] = 0);
+
+  questions.forEach((q, i) => {
+    if (answers[i] !== null) {
+      pillarScores[q.pillar] += q.options[answers[i]].score;
+    }
+  });
+
+  let total = Object.values(pillarScores).reduce((a, b) => a + b, 0);
+
+  // Animate score
+  document.getElementById('totalScore').textContent = total;
+  const circle = document.getElementById('scoreCircle');
+  const circumference = 2 * Math.PI * 70;
+  const offset = circumference - (total / 50) * circumference;
+  setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+
+  // Pillar bars
+  const pillarContainer = document.getElementById('pillarScores');
+  pillarContainer.innerHTML = '';
+  pillars.forEach((p, i) => {
+    const score = pillarScores[p];
+    const pct = (score / 10) * 100;
+    const row = document.createElement('div');
+    row.className = 'pillar-row';
+    row.innerHTML = `
+      <span class="pillar-name">${p}</span>
+      <div class="pillar-bar-track">
+        <div class="pillar-bar-fill" style="background:${colors[i]}" data-width="${pct}%"></div>
+      </div>
+      <span class="pillar-val">${score}/10</span>
+    `;
+    pillarContainer.appendChild(row);
+  });
+
+  setTimeout(() => {
+    document.querySelectorAll('.pillar-bar-fill').forEach(el => {
+      el.style.width = el.dataset.width;
+    });
+  }, 200);
+
+  // Message
+  const msgEl = document.getElementById('resultsMessage');
+  let title, msg;
+  if (total >= 40) {
+    title = 'Strong Foundation';
+    msg = 'You demonstrate remarkable emotional and cognitive strength across the five pillars. Your Emotional Portfolio reflects deep reserves of resilience, self-awareness, and relational wisdom. Consider how you might mentor or support others on their journey.';
+  } else if (total >= 25) {
+    title = 'Building Momentum';
+    msg = 'You have solid foundations in place and areas where you\'re clearly growing. This is a great position — you\'re aware enough to see where growth is possible and strong enough to pursue it. Our resource library and community forum can help you build on this momentum.';
+  } else {
+    title = 'A Brave Starting Point';
+    msg = 'Taking this assessment is itself an act of courage. Your results show areas where intentional support could make a significant difference. You don\'t have to navigate this alone — our programs, resources, and community are here for exactly this moment in your journey.';
+  }
+  msgEl.innerHTML = `<h3>${title}</h3><p>${msg}</p>`;
+}
+
+function retakeAssessment() {
+  currentQ = 0;
+  answers = new Array(questions.length).fill(null);
+  document.getElementById('questionsContainer').style.display = 'block';
+  document.getElementById('resultsContainer').style.display = 'none';
+  renderQuestion();
+}
+
+// Init
+renderQuestion();
+
+// ══════════════════════════════════
+// RESOURCE LIBRARY
+// ══════════════════════════════════
+const resources = [
+  {
+    category: 'grief',
+    tag: 'Grief Recovery',
+    title: 'The Grief Stewardship Journal',
+    desc: 'A guided 90-day journal for processing loss with intention. Combines reflective prompts, scripture anchors, and space for honest expression.',
+    type: 'Guided Journal',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'
+  },
+  {
+    category: 'grief',
+    tag: 'Grief Recovery',
+    title: 'Understanding the Landscape of Loss',
+    desc: 'An introductory guide to the many faces of grief — anticipatory, disenfranchised, cumulative, and more. Know what you\'re carrying.',
+    type: 'Guide',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
+  },
+  {
+    category: 'resilience',
+    tag: 'Resilience',
+    title: 'Building Your Resilience Architecture',
+    desc: 'A practical worksheet series for identifying your stress patterns, building recovery rituals, and strengthening your capacity for adversity.',
+    type: 'Worksheet',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>'
+  },
+  {
+    category: 'resilience',
+    tag: 'Resilience',
+    title: 'The ASCEND™ Framework Overview',
+    desc: 'Learn about our 60-day intensive program designed to build lasting emotional and cognitive capacity. For adults ready to do the deep work.',
+    type: 'Program Overview',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>'
+  },
+  {
+    category: 'family',
+    tag: 'Family Healing',
+    title: 'The Blended Family Toolkit',
+    desc: 'Trauma-informed strategies for building trust, establishing healthy boundaries, and creating unity in blended family households.',
+    type: 'Toolkit',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'
+  },
+  {
+    category: 'family',
+    tag: 'Family Healing',
+    title: 'Communication Scripts for Hard Conversations',
+    desc: 'Ready-to-use conversation frameworks for discussing loss, change, boundaries, and expectations with children and partners.',
+    type: 'Guide',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
+  },
+  {
+    category: 'faith',
+    tag: 'Faith & Stewardship',
+    title: 'Biblical Foundations of Emotional Stewardship',
+    desc: 'Scripture-based exploration of why emotional wellness is not secular self-help but sacred responsibility. Includes study questions for small groups.',
+    type: 'Study Guide',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
+  },
+  {
+    category: 'veterans',
+    tag: 'Veterans',
+    title: 'Mission-Ready Civilian™ Readiness Guide',
+    desc: 'A transition roadmap for veterans re-entering civilian life. Covers identity recalibration, purpose mapping, and building new support networks.',
+    type: 'Program Guide',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>'
+  },
+  {
+    category: 'faith',
+    tag: 'Faith & Stewardship',
+    title: 'From Hospital Room to Holy Ground',
+    desc: 'Reflections and practices for caregivers who carry both the weight of responsibility and the calling to steward the sacred space of suffering.',
+    type: 'Devotional',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'
+  },
+];
+
+function renderResources(filter = 'all') {
+  const grid = document.getElementById('resourceGrid');
+  grid.innerHTML = '';
+  const filtered = filter === 'all' ? resources : resources.filter(r => r.category === filter);
+  filtered.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'resource-card fade-in';
+    card.style.animationDelay = `${i * .08}s`;
+    card.innerHTML = `
+      <div class="resource-card-top ${r.category}"></div>
+      <div class="resource-card-body">
+        <span class="resource-tag">${r.tag}</span>
+        <h3>${r.title}</h3>
+        <p>${r.desc}</p>
+        <div class="resource-meta">
+          <span class="resource-type">${r.icon} ${r.type}</span>
+          <a href="#" class="resource-link" onclick="event.preventDefault()">View →</a>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+renderResources();
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderResources(btn.dataset.filter);
+  });
+});
+
+// ══════════════════════════════════
+
+// ══════════════════════════════════
+// FORUM SYSTEM
+// ══════════════════════════════════
+const forums = [
+  {id:'grief',name:'Grief & Loss',desc:'A safe space for those navigating loss. whether recent or long-carried. Share, listen, and walk alongside others who understand.',members:248,icon:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'},
+  {id:'caregiver',name:'Caregiver Circle',desc:'For those caring for aging parents, ailing spouses, or loved ones with chronic conditions. You are not alone in this holy work.',members:183,icon:'<svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>'},
+  {id:'family',name:'Blended Families',desc:'Navigate the complexities of merging households with grace. Share wins, challenges, and strategies for building unity from diversity.',members:156,icon:'<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>'},
+  {id:'veterans',name:'Veteran Transitions',desc:'From service to civilian life. find purpose, community, and tools for the mission ahead.',members:134,icon:'<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'},
+  {id:'faith',name:'Faith & Healing',desc:'Integrate your faith journey with your healing journey. Biblical wisdom meets evidence-based emotional wellness practices.',members:211,icon:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'}
+];
+const sampleThreads = {
+  grief:[
+    {id:1,title:'Six months without Mom',body:'It has been half a year since I lost my mother. Some days feel manageable, others feel like the first day all over again. Does the weight ever shift?',author:'Grace M.',time:'2 hours ago',comments:[
+      {author:'David R.',text:'Grace, I am coming up on a year. The weight does shift. It does not leave, but it changes shape. You learn to carry it differently. Be patient with yourself.',time:'1 hour ago'},
+      {author:'Anonymous',text:'I lost my mom 3 years ago. What helped me most was letting myself grieve without a timeline. Some days I still cry in the car. That is okay.',time:'45 min ago'},
+      {author:'Tanya W.',text:'Grace, I just passed the one year mark last month. What nobody tells you is that the 6 month point can actually feel harder than the first weeks because the shock has worn off and the reality has settled in. You are right on schedule, even though it does not feel like it.',time:'30 min ago'},
+      {author:'Rev. Greene',text:'Grace, I have walked with many families through this season. Six months is often when the casseroles stop coming and the phone calls slow down, but the grief does not. Lean into your community. You do not have to carry this alone.',time:'20 min ago'}
+    ]},
+    {id:2,title:'Grief showing up at unexpected times',body:'I was at the grocery store yesterday and completely broke down in the cereal aisle. My dad always ate the same cereal. Has anyone else had grief ambush them in public?',author:'Michael T.',time:'5 hours ago',comments:[
+      {author:'Sarah L.',text:'Grief ambushes are so real. A song, a smell, an aisle in a store. I have learned to let the wave pass rather than fight it. You are not alone in this.',time:'3 hours ago'},
+      {author:'Carlos V.',text:'My father passed two years ago and I still cannot drive past the hospital without my chest tightening. My therapist calls them grief triggers. She says the goal is not to avoid them but to build tolerance for the feelings they bring up.',time:'2 hours ago'},
+      {author:'Denise K.',text:'I started carrying a small notebook and writing down the moments when grief catches me off guard. Over time I noticed the triggers are actually memories of love. It helped me reframe them.',time:'1 hour ago'},
+      {author:'Anonymous',text:'The produce section gets me every time. My wife used to squeeze every avocado in the store. I stood there last Tuesday holding one and just laughing and crying at the same time. A stranger asked if I was okay and I said "Yeah, I am just missing someone." She nodded like she understood completely.',time:'40 min ago'}
+    ]},
+    {id:3,title:'Finding purpose after loss',body:'My therapist says I need to find new purpose after losing my husband. But how do you rebuild when the person who was your "why" is gone?',author:'Anonymous',time:'1 day ago',comments:[
+      {author:'Patricia H.',text:'I lost my husband four years ago. The truth is you do not find a new "why" overnight. For me it started small. I volunteered at a food bank just to have somewhere to go on Saturdays. That turned into a community that needed me and I needed them.',time:'20 hours ago'},
+      {author:'Rev. Thomas',text:'In my experience walking with widows and widowers, purpose does not replace the person you lost. It grows alongside the grief. Both can coexist. Give yourself permission to explore without guilt.',time:'18 hours ago'},
+      {author:'Monica J.',text:'I started by asking myself "What made me feel alive before I met him?" It felt selfish at first but it helped me remember that I existed as a whole person before our marriage. My purpose was always there, just woven together with his.',time:'14 hours ago'},
+      {author:'James B.',text:'Two years out. I started coaching youth basketball because my wife always said I was good with kids. Every time I see one of those kids light up I think of her. The purpose found me. I did not have to force it.',time:'8 hours ago'}
+    ]},
+    {id:4,title:'Complicated grief and feeling stuck',body:'It has been over two years and people keep telling me I should be "over it" by now. I still think about my sister every single day. Is something wrong with me?',author:'Janelle R.',time:'3 hours ago',comments:[
+      {author:'Dr. Lisa M.',text:'Janelle, there is a clinical term called Prolonged Grief Disorder but thinking about your sister daily does not automatically mean that applies to you. Grief is not linear and there is no expiration date. The question is whether the grief is preventing you from functioning, not whether you still feel it.',time:'2 hours ago'},
+      {author:'Marcus P.',text:'Two and a half years since I lost my brother. I think about him every day too. My counselor helped me see the difference between grieving and being stuck. Grieving means you still feel it. Being stuck means you cannot move at all. Sounds like you are grieving, and that is human.',time:'1 hour ago'},
+      {author:'Sandra G.',text:'The people who say "get over it" usually have not lost someone that close. You do not owe anyone a timeline.',time:'45 min ago'},
+      {author:'Therapist Claire',text:'Janelle, I want to gently add that if you find yourself unable to engage in daily activities, avoiding all reminders, or feeling like life has no meaning without your sister, those would be signs to seek professional grief support. But daily thoughts and missing her deeply? That is just love with nowhere to go.',time:'30 min ago'}
+    ]},
+    {id:5,title:'How do you handle the firsts?',body:'First birthday without her. First Thanksgiving. First Christmas. Every "first" feels like losing her all over again. How did you all get through them?',author:'Tony B.',time:'8 hours ago',comments:[
+      {author:'Angela C.',text:'Tony, the firsts are brutal. What helped me was deciding ahead of time how I wanted to honor the day instead of waiting for it to hit me. On my mom\'s first birthday after she passed, I made her favorite meal and invited family over. It hurt but it also felt right.',time:'6 hours ago'},
+      {author:'Keisha D.',text:'I gave myself permission to do things differently. Christmas used to be at my parents house. That first year I went to the beach instead. Some people did not understand but I needed to break the pattern so the memories did not crush me.',time:'4 hours ago'},
+      {author:'Anonymous',text:'Honestly I just survived them. And that was enough. You do not have to make them beautiful or meaningful. You just have to get to the other side.',time:'2 hours ago'},
+      {author:'Beth M.',text:'Something a grief counselor told me: the anticipation of the "first" is almost always worse than the day itself. Your brain builds it up into this impossible mountain but then the day comes and you get through it. Not because you are strong but because that is what humans do.',time:'1 hour ago'},
+      {author:'Will S.',text:'My dad\'s first birthday after he passed, I lit a candle at 6:47am, the minute he was born. I sat with it for an hour and talked to him. It became a ritual I do every year now. It gives me somewhere to put the love.',time:'30 min ago'}
+    ]},
+    {id:6,title:'Grief and the body',body:'Has anyone else experienced physical symptoms from grief? I have had chest pain, trouble sleeping, loss of appetite, and my doctor says it is all stress related.',author:'Natalie F.',time:'6 hours ago',comments:[
+      {author:'Jordan K.',text:'Yes, absolutely. After my father died I had migraines for months and lost 15 pounds because I could not eat. Grief literally lives in the body. Research shows it can affect your immune system, heart health, and sleep patterns. Please take care of yourself physically even when it feels pointless.',time:'5 hours ago'},
+      {author:'Priya S.',text:'I started getting panic attacks after my loss that I had never experienced before. My doctor explained that grief activates the same stress response as physical danger. Walking helped me more than anything. Just 20 minutes a day made a real difference.',time:'3 hours ago'},
+      {author:'Nurse Janine',text:'Natalie, as a nurse I want to validate that what you are experiencing is very real and very common. Broken heart syndrome is an actual medical condition where grief can temporarily enlarge part of the heart. Please keep following up with your doctor and do not dismiss your symptoms just because they are "stress related." Stress is serious.',time:'2 hours ago'},
+      {author:'Anonymous',text:'I could not sleep for three months after my son died. Not insomnia, real inability to sleep. My body was in constant fight or flight. What finally helped was a combination of a low dose sleep medication from my doctor and a nightly routine where I wrote a letter to my son before bed. The writing seemed to settle my nervous system enough to rest.',time:'1 hour ago'}
+    ]},
+    {id:7,title:'Grieving someone who is still alive',body:'My mother has severe dementia. She is alive but she is not here. I grieve her every single day while still feeding her, bathing her, and holding her hand. Does anyone understand this kind of loss?',author:'Rebecca N.',time:'4 hours ago',comments:[
+      {author:'James W.',text:'Rebecca, I posted about this exact thing in the Caregiver Circle. It is called ambiguous loss. You are mourning someone who is physically present but psychologically absent. It is one of the most painful forms of grief because there is no closure, no funeral, no endpoint. Just an ongoing goodbye.',time:'3 hours ago'},
+      {author:'Dr. Kara L.',text:'What you are describing was first studied by Dr. Pauline Boss who coined the term "ambiguous loss." She found it is especially difficult because society does not recognize it as grief. People say "at least she is still here" which completely invalidates your pain. Your grief is real.',time:'2 hours ago'},
+      {author:'Anonymous',text:'My dad had Alzheimer\'s for 8 years. I lost him a hundred times before he actually died. Each time he forgot my name, each time he looked at me with no recognition. And then when he finally passed, people expected me to grieve but I had been grieving for years. I want you to know that you are seen.',time:'1 hour ago'}
+    ]},
+    {id:8,title:'When grief makes you angry',body:'Everyone talks about sadness but nobody talks about the rage. I am angry at the doctors, angry at God, angry at my husband for dying, angry at people who still have their person. Is anger a normal part of grief?',author:'Tasha C.',time:'1 day ago',comments:[
+      {author:'Counselor Mark',text:'Tasha, anger is not just normal in grief, it is essential. Elizabeth Kubler-Ross included anger as one of the stages for a reason. Anger is grief with energy. Sadness makes us collapse inward but anger pushes outward. It is your psyche saying "this is not okay and it should not have happened." Honor it.',time:'22 hours ago'},
+      {author:'Anonymous',text:'I was so angry after my wife died that I punched a wall and broke my hand. Not proud of that. But a grief counselor helped me find healthier outlets. I took up boxing at a local gym and it saved me. Sometimes grief needs a physical release.',time:'18 hours ago'},
+      {author:'Karen B.',text:'I was angry at my best friend for two years because she was the one who convinced my sister to go on that trip. The anger was easier to feel than the sadness. My therapist said anger often sits on top of deeper emotions because it feels more powerful than helplessness. Once I let myself feel the helplessness underneath, the anger started to soften.',time:'12 hours ago'}
+    ]}
+  ],
+  caregiver:[
+    {id:1,title:'Caregiver burnout is real',body:'I have been my father\'s primary caregiver for 2 years. I love him deeply but I am running on empty. How do you ask for help without feeling guilty?',author:'Linda K.',time:'3 hours ago',comments:[
+      {author:'Yvonne H.',text:'Linda, asking for help is not weakness. It is wisdom. You cannot pour from an empty cup. Start small: ask one person for one specific thing this week.',time:'2 hours ago'},
+      {author:'Derek M.',text:'I was in your exact position with my mother. I felt guilty hiring a home aide for even 4 hours a week. But those 4 hours saved my mental health and honestly made me a better caregiver the other 164 hours.',time:'1 hour ago'},
+      {author:'Nurse Kim',text:'As a home health nurse I see caregiver burnout every day. The caregivers who last are the ones who build a team around them. It is not selfish. It is sustainable.',time:'45 min ago'},
+      {author:'Anonymous',text:'I waited until I was in the ER with chest pains before I asked for help. Please do not be me. Your body will eventually force you to stop if you do not choose to slow down first.',time:'30 min ago'}
+    ]},
+    {id:2,title:'Anticipatory grief while caregiving',body:'Has anyone else experienced grief for someone who is still here? I mourn the version of my mom I used to know, even as I care for her daily.',author:'James W.',time:'8 hours ago',comments:[
+      {author:'Helen R.',text:'James, what you are describing is called anticipatory grief and it is one of the least talked about aspects of caregiving. You are grieving the relationship as it was, the person as they were, and the future you expected. All while still showing up every day.',time:'6 hours ago'},
+      {author:'Anonymous',text:'I cared for my wife through Alzheimer\'s for seven years. There were days she did not recognize me. I grieved her while she was sitting right next to me. Please know that what you feel is valid.',time:'4 hours ago'},
+      {author:'Dr. Kara L.',text:'James, anticipatory grief can actually be more isolating than post-death grief because people around you may not understand why you are mourning someone who is "still here." Consider joining a support group specifically for caregivers. Being around people who get it makes an enormous difference.',time:'2 hours ago'}
+    ]},
+    {id:3,title:'Setting boundaries with siblings who do not help',body:'I am the only one of four siblings caring for our dad. The others live nearby but always have excuses. How do I address this without blowing up the family?',author:'Tamara J.',time:'5 hours ago',comments:[
+      {author:'Rachel B.',text:'Tamara, I lived this exact situation. What finally worked was sending a clear, non-emotional email laying out everything I was doing with hours and costs, and then asking each sibling to choose one specific thing they could take on.',time:'4 hours ago'},
+      {author:'Frank M.',text:'Family meetings with a neutral third party helped us. We used a family mediator from our local Area Agency on Aging. It was free and it took the emotional charge out of the conversation.',time:'3 hours ago'},
+      {author:'Anonymous',text:'Sometimes the hardest part is accepting that some siblings will never step up. I had to grieve that expectation too. Focus on what you can control and build your support from other sources.',time:'1 hour ago'},
+      {author:'Elder Law Attorney Beth',text:'Tamara, I want to add a practical note. Document everything you are doing and the costs involved. If your father has assets, there may be legal mechanisms for compensating a primary caregiver. Many families do not know this. Consult an elder law attorney.',time:'45 min ago'}
+    ]},
+    {id:4,title:'Losing yourself in the caregiving role',body:'I used to paint, go to book club, see friends. Now my entire identity is "dad\'s caregiver." I do not even know who I am outside of this role anymore.',author:'Olivia P.',time:'12 hours ago',comments:[
+      {author:'Maria S.',text:'Olivia, identity loss in caregiving is real and it is documented. Researchers call it caregiver identity and it can completely overshadow your sense of self. Even reclaiming 30 minutes a day for something that is just yours can start to bring you back.',time:'10 hours ago'},
+      {author:'Anonymous',text:'I started waking up 45 minutes before my mom to drink coffee and sketch in a notebook. Nobody else was awake. It was mine. That tiny ritual reminded me I existed outside of caregiving.',time:'8 hours ago'},
+      {author:'Counselor Jen',text:'Olivia, I work with caregivers and one exercise I give them is to finish this sentence without mentioning caregiving: "I am a person who..." It is harder than it sounds but it is the beginning of reclaiming your identity.',time:'5 hours ago'},
+      {author:'Patricia H.',text:'I lost myself so completely in caregiving that after my husband passed, I literally did not know what I liked to eat for dinner. He had been on a restricted diet for so long that I had only been cooking what he could have. The first night alone I ordered pizza and cried because it was delicious and because I realized how long it had been since I made a choice just for me.',time:'3 hours ago'}
+    ]},
+    {id:5,title:'Preparing for life after caregiving',body:'My mother is in hospice now. I have been her caregiver for three years. I know the end is near and I am terrified of both losing her and having my purpose disappear overnight.',author:'Daniel C.',time:'1 day ago',comments:[
+      {author:'Sandra W.',text:'Daniel, what you are feeling has a name. It is called post-caregiving void and it is incredibly common. After my husband passed, the silence was deafening. Not just his absence but the absence of the routine, the purpose, the constant doing.',time:'22 hours ago'},
+      {author:'Lisa T.',text:'When my dad passed after I cared for him for four years, I actually felt relief and then crushing guilt for feeling relieved. A grief counselor helped me understand that relief after a long caregiving journey is normal and does not diminish your love.',time:'18 hours ago'},
+      {author:'Chaplain Mark',text:'Daniel, you have been doing sacred work. The transition will be hard. I encourage you to connect with a support group specifically for bereaved caregivers.',time:'12 hours ago'},
+      {author:'Anonymous',text:'Three things that helped me after my caregiving ended: First, I kept a routine even when there was nothing to do. Second, I waited six months before making any major life decisions. Third, I found a therapist who specializes in caregiver grief. The grief of a caregiver is different because you are mourning the person AND the role simultaneously.',time:'6 hours ago'}
+    ]},
+    {id:6,title:'Financial strain of caregiving',body:'I had to cut my hours to part-time to care for my mom. My savings are gone. I feel guilty for even thinking about money when she is the one who is sick. But I am drowning.',author:'Rosa M.',time:'6 hours ago',comments:[
+      {author:'Social Worker Amy',text:'Rosa, financial concerns during caregiving are not selfish. They are survival. Please contact your local Area Agency on Aging. There are programs many caregivers do not know about including respite care funds, Medicaid waiver programs, and in some states, payment programs for family caregivers.',time:'5 hours ago'},
+      {author:'Kevin P.',text:'I went through the same thing. I did not know until year two that my state has a paid family caregiver program through Medicaid. I was able to get compensated for some of the care I was already providing. It did not make me rich but it kept the lights on. Please look into your state\'s options.',time:'3 hours ago'},
+      {author:'Anonymous',text:'I burned through my entire retirement caring for my dad. No one talks about the financial devastation of caregiving. According to AARP, family caregivers spend an average of $7,000 per year out of pocket. You are not alone in this and you deserve support.',time:'2 hours ago'}
+    ]},
+    {id:7,title:'When the person you are caring for is mean to you',body:'My father has always been difficult but his illness has made him cruel. He says terrible things to me, the person who gave up everything to care for him. I know it is the disease but it still hurts.',author:'Sharon K.',time:'10 hours ago',comments:[
+      {author:'Nurse Kim',text:'Sharon, this is one of the most painful aspects of caregiving that rarely gets discussed. Many conditions including dementia, stroke, and chronic pain can cause personality changes and verbal aggression. Knowing it is the disease does not make the words hurt less. Please give yourself permission to step out of the room, take a breath, and cry when you need to.',time:'8 hours ago'},
+      {author:'Anonymous',text:'My mom told me she wished I had never been born during a bad episode. I went to my car and sobbed for twenty minutes. Then I came back in and helped her with dinner. Caregiving is the hardest thing I have ever done and no one gives you a medal for it. This community is the closest thing I have to people who actually understand.',time:'6 hours ago'},
+      {author:'Dr. Patel',text:'Sharon, I strongly recommend looking into a caregiver support group. The emotional toll of being the target of verbal abuse from someone you love and are sacrificing for is profound. It can lead to depression, anxiety, and compassion fatigue. You deserve support just as much as the person you are caring for.',time:'4 hours ago'}
+    ]}
+  ],
+  family:[
+    {id:1,title:'Step-parenting boundaries',body:'My stepchildren are wonderful but setting boundaries without overstepping feels impossible. Any advice from blended family veterans?',author:'Rachel P.',time:'4 hours ago',comments:[
+      {author:'Mark D.',text:'The biggest lesson I learned: do not try to replace their parent. Be a safe, consistent adult in their lives. The respect comes with time, not authority.',time:'2 hours ago'},
+      {author:'Stephanie L.',text:'I have been a stepmom for 6 years. What worked for us was having my husband be the primary disciplinarian in the beginning while I focused on building trust through connection.',time:'1 hour ago'},
+      {author:'Dr. Amy K.',text:'The research on step-parent relationships is clear: the step-parent who focuses on being a mentor and friend in the first 2 to 3 years has significantly better long-term outcomes than the one who tries to be a disciplinary authority immediately. Patience is your greatest tool.',time:'45 min ago'},
+      {author:'Anonymous',text:'Seven years as a stepdad. The turning point for me was when my stepdaughter asked me to come to her school play. Not her dad, me. I did not push for it. I just showed up consistently and eventually she chose to include me. Trust the process.',time:'30 min ago'}
+    ]},
+    {id:2,title:'Merging holiday traditions',body:'This is our first holiday season as a blended family. How do you honor both families\' traditions without making anyone feel erased?',author:'Kim S.',time:'1 day ago',comments:[
+      {author:'Jason T.',text:'We held a family meeting and let each kid pick one tradition from their original family that was non-negotiable. Then we created one brand new tradition that was just ours. Now five years later the new tradition is everyone\'s favorite.',time:'20 hours ago'},
+      {author:'Anonymous',text:'Honestly the first year was messy and some feelings got hurt. But we learned from it and year two was much better. Give yourselves permission to figure it out as you go.',time:'16 hours ago'},
+      {author:'Maria R.',text:'We alternate holidays between homes and on the years the kids are with their other parent, we celebrate a week early or late. The kids actually love having two celebrations. Flexibility is everything.',time:'10 hours ago'},
+      {author:'Counselor Jen',text:'Kim, one thing I tell blended families is to name the awkwardness out loud. Say "This is new for all of us and it might feel weird and that is okay." Kids especially need permission to feel uncomfortable without guilt. When you normalize the discomfort, everyone relaxes.',time:'6 hours ago'}
+    ]},
+    {id:3,title:'When kids play parents against each other',body:'My 12 year old stepdaughter has figured out that she can get different answers from me and her dad. She tells each of us what the other one "said" and it creates constant conflict.',author:'Vanessa G.',time:'6 hours ago',comments:[
+      {author:'Dr. Amy K.',text:'Vanessa, this is developmentally normal behavior amplified by the blended family dynamic. The solution is a united front. Agree with your husband on rules together and respond to her with "let me check with Dad" before answering.',time:'4 hours ago'},
+      {author:'Tom H.',text:'We dealt with this by creating a shared family rules document posted on the fridge. Same rules regardless of which parent she asked. The manipulation stopped within a month.',time:'3 hours ago'},
+      {author:'Anonymous',text:'My therapist pointed out something important. She said the kid is not being manipulative in a malicious way. She is testing the system to see if it is safe and predictable. Kids from divorced homes have had their world turned upside down and testing boundaries is how they figure out the new rules. It reframed everything for me.',time:'1 hour ago'}
+    ]},
+    {id:4,title:'The loyalty bind: kids feeling guilty for liking their step-parent',body:'My 9 year old son told me he feels bad for having fun with his stepdad because he thinks it hurts my feelings. He actually cried about it. How do I handle this?',author:'Chris M.',time:'10 hours ago',comments:[
+      {author:'Dr. Amy K.',text:'Chris, your son is experiencing what family therapists call a loyalty bind. He loves both his biological parent and his step-parent but feels that caring for one betrays the other. The most powerful thing you can do is explicitly give him permission to love his stepdad.',time:'8 hours ago'},
+      {author:'Renee P.',text:'My daughter went through this at the same age. I sat her down and told her "Your heart is big enough for all the people who love you." She literally exhaled. She had been carrying that weight for months.',time:'6 hours ago'},
+      {author:'Anonymous',text:'As a stepdad, hearing my stepson say "I love you" for the first time and then immediately look scared broke my heart. I told him he has so many people who love him and that is a good thing.',time:'4 hours ago'},
+      {author:'Pastor Lisa',text:'Chris, I see this in so many families at our church. Children are incredibly empathetic and they absorb the unspoken tensions between the adults in their lives. If there is any lingering resentment between you and your ex, the children feel it even if you never say a word. The most loving thing you can do is genuinely release your son from the middle.',time:'2 hours ago'}
+    ]},
+    {id:5,title:'Co-parenting with a difficult ex',body:'My ex undermines every rule we set in our home. The kids come back from his house with completely different expectations. How do you co-parent when the other household will not cooperate?',author:'Brittany L.',time:'2 days ago',comments:[
+      {author:'Kevin D.',text:'The biggest shift for me was accepting that I cannot control what happens in her house. I can only control what happens in mine. Consistency in our home eventually became the anchor the kids relied on.',time:'1 day ago'},
+      {author:'Counselor Jen',text:'Parallel parenting might be the approach you need. Unlike co-parenting which requires cooperation, parallel parenting minimizes contact and lets each household operate independently.',time:'20 hours ago'},
+      {author:'Anonymous',text:'I spent three years fighting with my ex about bedtimes and screen time rules. Three years of stress. Then I just stopped. I made our house our house and let go of controlling his. My blood pressure dropped and honestly the kids adjusted fine. They are smarter than we give them credit for.',time:'14 hours ago'},
+      {author:'Family Attorney Mike',text:'Brittany, if the issues are serious like safety concerns or violations of your custody agreement, document everything and consult your attorney. But if it is about different rules and parenting styles, most courts will not intervene. Focus your energy on being the stable consistent home.',time:'8 hours ago'}
+    ]},
+    {id:6,title:'Bio mom and stepmom relationship',body:'I am a stepmom and my husband\'s ex absolutely hates me. I have tried being kind, staying out of it, everything. The kids are caught in the middle and it is breaking my heart.',author:'Nicole T.',time:'8 hours ago',comments:[
+      {author:'Anonymous',text:'I was the bio mom in this situation and I want to be honest. I hated my ex\'s new wife for a long time. Not because she did anything wrong but because she represented everything I had lost. It took me two years of therapy to separate my grief from my behavior. If the bio mom is not there yet, it is not about you.',time:'6 hours ago'},
+      {author:'Dr. Amy K.',text:'Nicole, the relationship between bio mom and stepmom is one of the most complex dynamics in blended families. Research shows that when these two women can find even a basic level of respect, the children thrive. But it takes two. You can only control your side. Keep being kind, keep your boundaries, and protect your peace.',time:'4 hours ago'},
+      {author:'Stephanie L.',text:'Five years in and my husband\'s ex and I are not friends but we are civil. The shift happened when we both showed up at a school event and I let her have the front row seat without making it a thing. Small surrenders built trust over time. It is a marathon not a sprint.',time:'2 hours ago'}
+    ]},
+    {id:7,title:'Blending families with different cultural backgrounds',body:'My husband is Nigerian and I am Mexican American. We both have kids from previous marriages. Blending two cultures on top of blending two families feels overwhelming. Any advice?',author:'Elena R.',time:'1 day ago',comments:[
+      {author:'Adaobi N.',text:'Elena, my husband is Puerto Rican and I am from Ghana. The best thing we did was let the kids be the bridge. Kids are naturally curious about different foods, music, and traditions. We turned cultural differences into family adventures. "Nigerian night" and "Mexican night" became something everyone looked forward to.',time:'20 hours ago'},
+      {author:'Anonymous',text:'The cultural piece actually made blending easier for us in some ways. The kids were so excited about learning new traditions that it gave us positive shared experiences instead of just navigating the hard stuff. Lean into the richness of what both cultures bring.',time:'14 hours ago'},
+      {author:'Counselor Jen',text:'Elena, multicultural blended families have unique strengths. Research shows that children raised with exposure to multiple cultures develop stronger cognitive flexibility and empathy. The challenges are real but so are the gifts you are giving these children.',time:'8 hours ago'}
+    ]}
+  ],
+  veterans:[
+    {id:1,title:'Civilian life feels foreign',body:'I have been out for 6 months and I still do not feel like I belong. The structure, the purpose, the camaraderie. Civilian life has none of it. Anyone else?',author:'Sgt. Martinez',time:'6 hours ago',comments:[
+      {author:'Chris B.',text:'3 years out and it gets better. Find your tribe. Veteran groups, service organizations. The mission changes but the sense of purpose can come back.',time:'4 hours ago'},
+      {author:'Anonymous',text:'Look into the Mission-Ready Civilian program. It helped me translate my military identity into civilian purpose.',time:'2 hours ago'},
+      {author:'Staff Sgt. Williams',text:'Martinez, the first year was the hardest for me too. What nobody prepares you for is the silence. No formation, no mission brief, nobody depending on you at 0600. I started volunteering with Team Rubicon and having a mission again changed everything.',time:'1 hour ago'},
+      {author:'Veteran Coach Ray',text:'The Department of Labor reports that the average veteran goes through 3 jobs in their first 2 years after separation. That is normal. You are not failing. You are recalibrating. Give yourself the same patience you would give a new recruit.',time:'45 min ago'}
+    ]},
+    {id:2,title:'Anger I did not know I had',body:'My wife says I have changed since coming home. I snap at small things. Road rage. Short fuse with the kids. I do not want to be this person but I do not know how to turn it off.',author:'Anonymous',time:'10 hours ago',comments:[
+      {author:'Veteran Coach Ray',text:'Brother, what you are describing is more common than you think. Your nervous system was trained to stay on high alert and it does not just turn off because you are stateside. The anger is actually hypervigilance expressing itself.',time:'8 hours ago'},
+      {author:'Jake T.',text:'I was exactly where you are two years ago. My breaking point was when I yelled at my 4 year old for dropping a cup. The look on her face. I called the Veterans Crisis Line that night. Not because I was suicidal but because I knew I needed help. Best call I ever made.',time:'6 hours ago'},
+      {author:'Dr. Patel',text:'What you are experiencing aligns with what we see in many post-service veterans. The amygdala has been conditioned to respond to everything as a threat. CBT and EMDR have strong evidence for helping veterans retrain that response. You are not broken.',time:'4 hours ago'},
+      {author:'Monica R.',text:'As the wife of a veteran, I want you to know that reaching out here is a sign of strength. My husband struggled with the same thing. What made the difference was couples therapy with a VA counselor who understood military culture. We learned to communicate through it together.',time:'2 hours ago'}
+    ]},
+    {id:3,title:'Translating military skills to a civilian resume',body:'I led a team of 30, managed million dollar equipment, and made life or death decisions daily. But I cannot seem to get past an entry level job interview. What am I doing wrong?',author:'CPL Davis',time:'1 day ago',comments:[
+      {author:'Hiring Manager Sarah',text:'CPL Davis, the most common issue is language translation. "Led a 30 person team in high-stress operations" translates to "managed cross-functional team of 30 under tight deadlines with zero margin for error." Reframe military jargon into corporate language.',time:'20 hours ago'},
+      {author:'Brandon W.',text:'I spent 8 months frustrated with this exact problem. What changed everything was working with a veteran employment specialist at my local American Job Center. Three weeks after rewriting my resume I had an offer.',time:'16 hours ago'},
+      {author:'Anonymous',text:'Do not undersell yourself. Practice your stories using the STAR method: Situation, Task, Action, Result. Civilian hiring managers respond to concrete examples.',time:'10 hours ago'},
+      {author:'HR Director Lisa',text:'I specifically recruit veterans for my company because I know what military experience really means. The problem is most hiring managers do not. My advice: network with veteran-friendly employers. Look for companies with VETS indexes or Hiring Our Heroes partnerships. They already value what you bring.',time:'6 hours ago'}
+    ]},
+    {id:4,title:'Survivor guilt is eating me alive',body:'I lost three guys in my platoon. I came home. They did not. I have a family now, a house, a job. And every good thing that happens makes me feel like I stole it from them.',author:'Anonymous',time:'2 days ago',comments:[
+      {author:'Chaplain Rodriguez',text:'What you are carrying is one of the heaviest burdens a veteran can bear. But consider this: those brothers would want you to live. Fully. Not surviving in their memory but thriving in their honor.',time:'1 day ago'},
+      {author:'SSG Thompson',text:'I carry three names tattooed on my arm. For years I punished myself by refusing to be happy. My therapist finally said "Living small does not honor the dead. Living fully does." That reframe changed my trajectory.',time:'20 hours ago'},
+      {author:'Anonymous',text:'Ten years out. Two combat tours. I still think about them. But I have learned to channel the guilt into purpose. I mentor young veterans now. I figure if I cannot bring them back I can at least help the ones who made it home.',time:'12 hours ago'},
+      {author:'Gold Star Mom Karen',text:'I am the mother of a Marine who did not come home. And I want you to hear this from me: please live your life. Please laugh. Please hold your children. My son would be furious if he knew his brothers were suffering because they survived. You honored him by serving alongside him. Now honor him by living.',time:'6 hours ago'}
+    ]},
+    {id:5,title:'My family does not understand what I went through',body:'Thanksgiving dinner and my brother in law is talking about how stressful his office job is. I almost left the table. Nobody in my family gets it and I am tired of pretending.',author:'SFC Reyes',time:'8 hours ago',comments:[
+      {author:'Monica R.',text:'SFC Reyes, as a military spouse I have watched my husband struggle with this for years. Finding even one person who gets it, another vet or a good therapist, can release the pressure so you do not need your family to carry what they cannot.',time:'6 hours ago'},
+      {author:'Tony M.',text:'I used to get angry at civilians for not understanding. Then a counselor pointed out that I would not want them to understand, because understanding means they would have had to live through it too. That shifted something for me.',time:'4 hours ago'},
+      {author:'Anonymous',text:'What helped me was realizing that my family was not dismissing my experience. They just literally could not comprehend it. Just like I cannot comprehend what it is like to be a surgeon or a firefighter. The gap is not disrespect. It is just different lived experience. Once I stopped expecting them to get it, I stopped being angry at them for failing to.',time:'2 hours ago'}
+    ]},
+    {id:6,title:'VA mental health services actually helped me',body:'I want to share a positive story. I resisted the VA for years because of the stigma and the horror stories. Finally went in for mental health. My therapist is a veteran herself and she changed my life. Do not give up on the VA.',author:'Corporal Willis',time:'1 day ago',comments:[
+      {author:'Sgt. Martinez',text:'Willis, thank you for sharing this. I have been putting off calling the VA for months. This is the push I needed.',time:'20 hours ago'},
+      {author:'Anonymous',text:'My experience was mixed. First therapist was not a good fit but I asked to switch and the second one was incredible. If your first experience is not great, try again with a different provider. You would not give up on restaurants after one bad meal.',time:'14 hours ago'},
+      {author:'VA Social Worker Tanya',text:'I work at the VA and I want everyone to know that you can also access Vet Centers which are community-based and separate from VA medical centers. They offer counseling in a more relaxed environment and you do not need to be enrolled in VA healthcare to use them.',time:'8 hours ago'}
+    ]}
+  ],
+  faith:[
+    {id:1,title:'When faith and grief collide',body:'Everyone says "God has a plan" but honestly that does not help when you are in the middle of pain. How do you hold faith and grief at the same time?',author:'Michelle T.',time:'7 hours ago',comments:[
+      {author:'Pastor David',text:'Michelle, even Jesus wept. Faith does not mean the absence of grief. It means you do not grieve alone. God can handle your anger, your doubt, and your tears.',time:'5 hours ago'},
+      {author:'Anonymous',text:'I struggled with this too. What helped me was reading Lamentations. The Bible is full of honest grief. You do not have to pretend.',time:'3 hours ago'},
+      {author:'Ruth A.',text:'I was so angry at God after my daughter died that I did not pray for an entire year. And you know what? He was still there when I came back. Faith is not fragile. It can hold your rage and your sorrow and your questions.',time:'2 hours ago'},
+      {author:'Deacon Paul',text:'Michelle, I think the phrase "God has a plan" is one of the most damaging things Christians say to grieving people. What we should say is "God is with you in this pain." There is a world of difference between those two statements.',time:'1 hour ago'}
+    ]},
+    {id:2,title:'Stewardship of emotions',body:'The concept of emotional stewardship from EQGenix really changed my perspective. Our emotions are not random. They are resources to be managed wisely.',author:'Robert J.',time:'2 days ago',comments:[
+      {author:'Deacon Paul',text:'Robert, this aligns beautifully with biblical teaching. Proverbs 4:23 says "Above all else guard your heart for everything you do flows from it." That is emotional stewardship in one verse.',time:'1 day ago'},
+      {author:'Christine W.',text:'I introduced the Emotional Portfolio concept in my women\'s Bible study and it resonated deeply. Several women said it was the first time they felt permission to take their emotional health as seriously as their spiritual health.',time:'20 hours ago'},
+      {author:'Marcus L.',text:'What struck me about this framework is how it reframes emotions as something to invest in and develop, not suppress or feel guilty about. For years my church taught me that negative emotions were a sign of weak faith. This framework gave me a healthier theology of feelings.',time:'12 hours ago'}
+    ]},
+    {id:3,title:'Praying through anxiety',body:'I have been told to "just pray about it" regarding my anxiety but prayer alone has not been enough. Does relying on therapy or medication mean my faith is weak?',author:'Anonymous',time:'5 hours ago',comments:[
+      {author:'Pastor Michael',text:'Absolutely not. We do not tell people with diabetes that insulin shows weak faith. Mental health treatment is healthcare. God gave us doctors and researchers for a reason. Therapy and prayer are not competing. They are complementary.',time:'4 hours ago'},
+      {author:'Nurse Sarah',text:'I am a psychiatric nurse and a woman of deep faith. I have watched people suffer needlessly because they were told medication meant they did not trust God enough. That theology has caused real harm. Please seek professional help alongside your prayer life.',time:'3 hours ago'},
+      {author:'David K.',text:'I resisted medication for years because of this exact belief. When I finally started an SSRI the fog lifted and I could actually engage in prayer more meaningfully than I had in a decade. My faith is stronger now, not weaker.',time:'2 hours ago'},
+      {author:'Anonymous',text:'Philippians 4:6-7 tells us to bring our anxieties to God. It does not say that is the only thing we should do. God works through many channels including skilled therapists. Seeking help is an act of faith, not a lack of it.',time:'1 hour ago'},
+      {author:'Rev. Thomas',text:'I preach this from the pulpit regularly: God gave us brains that produce serotonin and He gave scientists the ability to understand it. Taking medication for a chemical imbalance honors the complexity of how God made you. Full stop.',time:'30 min ago'}
+    ]},
+    {id:4,title:'Forgiveness feels impossible',body:'I know the Bible says to forgive but the person who hurt me has never apologized and does not even think they did anything wrong. How do you forgive someone who is not sorry?',author:'Karen B.',time:'1 day ago',comments:[
+      {author:'Rev. Thomas',text:'Karen, forgiveness is one of the most misunderstood concepts in Christian life. Forgiveness does not mean reconciliation. It does not mean what they did was okay. It does not mean you have to trust them again. Forgiveness is releasing the grip that their actions have on your heart. It is for you, not for them.',time:'20 hours ago'},
+      {author:'Marcus L.',text:'I carried unforgiveness toward my father for 20 years. It was like drinking poison and expecting him to get sick. A counselor helped me see that forgiving him was not about letting him off the hook. It was about freeing myself.',time:'16 hours ago'},
+      {author:'Sister Joan',text:'Karen, if it helps, forgiveness is often a process, not a moment. You may need to choose it again tomorrow and the day after. That is not failure. That is faithfulness.',time:'10 hours ago'},
+      {author:'Anonymous',text:'I want to add that boundaries and forgiveness can coexist. I have forgiven my mother for the way she raised me. I have also chosen not to be alone in a room with her. Both things are true. Forgiveness does not require you to put yourself back in harm\'s way.',time:'6 hours ago'}
+    ]},
+    {id:5,title:'Teaching kids about faith after loss',body:'My children are asking why God let their grandmother die. They are 6 and 9. I do not even have the answer for myself. How do I talk to them about this?',author:'Jennifer M.',time:'3 hours ago',comments:[
+      {author:'Children\'s Pastor Lisa',text:'Jennifer, at those ages honesty wrapped in comfort works best. You can say "I do not know why Grandma died and that makes me sad too. But I believe God is with us and with Grandma." They need to see that faith and questions can coexist.',time:'2 hours ago'},
+      {author:'Anonymous',text:'When my kids asked me this after their father died I said "Sometimes really sad things happen and we do not understand why. It is okay to be sad and it is okay to ask God hard questions." I keep the door open every time they bring it up.',time:'1 hour ago'},
+      {author:'Dr. Rebecca T.',text:'Research on children and grief shows that kids need three things: honesty appropriate to their age, reassurance that they are safe, and permission to feel whatever they feel. You do not need to have all the answers. You just need to be present.',time:'45 min ago'},
+      {author:'Grandpa Joe',text:'Jennifer, I lost my wife and had to have this conversation with my grandchildren. I told them "Grandma is not hurting anymore and she is with God now. And every time we remember her and smile, she is still a little bit here with us too." My 6 year old grandson now draws pictures "for Grandma" and puts them in a special box. It helps him process.',time:'30 min ago'}
+    ]},
+    {id:6,title:'Finding a church that welcomes broken people',body:'I left my church because every time I shared my struggles they quoted scripture at me instead of sitting with me. I want community but I want one that makes space for pain.',author:'Diana W.',time:'10 hours ago',comments:[
+      {author:'Pastor David',text:'Diana, what you experienced is unfortunately common and it is a failure of the church. A healthy faith community does not just quote scripture at pain. It enters into the suffering with you. Look for churches that have dedicated support ministries, grief groups, or recovery programs. Those tend to be the ones that understand brokenness.',time:'8 hours ago'},
+      {author:'Anonymous',text:'I church-hopped for two years after a similar experience. I finally found a small congregation where the pastor openly shares his own mental health journey from the pulpit. When the leader is vulnerable, the community becomes safe. Keep looking. Your church is out there.',time:'6 hours ago'},
+      {author:'Christine W.',text:'Diana, some of the most healing spiritual communities I have found are not traditional Sunday morning churches. Grief support groups, Celebrate Recovery, contemplative prayer gatherings. Sometimes the church you need looks different from the one you left.',time:'4 hours ago'},
+      {author:'Deacon Paul',text:'James 1:19 says "Be quick to listen, slow to speak." Too many churches have that backwards when someone is hurting. You deserve a community that listens first. I pray you find it.',time:'2 hours ago'}
+    ]},
+    {id:7,title:'Does God hear me when I cannot feel Him?',body:'I have been praying for months and hearing nothing. Silence. I used to feel God\'s presence so clearly. Now it is like talking to an empty room. Has anyone experienced this spiritual dryness?',author:'Thomas R.',time:'6 hours ago',comments:[
+      {author:'Sister Joan',text:'Thomas, what you are describing is what mystics have called "the dark night of the soul." St. John of the Cross, Mother Teresa, and many great saints experienced prolonged periods of spiritual dryness. Mother Teresa lived in spiritual silence for nearly 50 years and her faith never wavered. You are in good company.',time:'5 hours ago'},
+      {author:'Pastor Michael',text:'Thomas, I want to be honest with you: I experienced a full year of spiritual dryness after my mother died. No sense of God\'s presence. No warmth in prayer. Nothing. A spiritual director helped me see that God did not leave. My capacity to feel Him was temporarily overwhelmed by grief. The feelings returned. Keep showing up.',time:'3 hours ago'},
+      {author:'Anonymous',text:'I went through this and it terrified me. But a wise mentor told me something I will never forget: "Faith is not a feeling. It is a decision. You do not have to feel God to follow Him. Sometimes you just put one foot in front of the other in the dark and trust that the ground is still there." That got me through.',time:'1 hour ago'}
+    ]}
+  ]
+};
+let currentForum=null, currentThread=null;
+
+function renderForumGrid(){
+  const grid=document.getElementById('forumGrid');
+  grid.innerHTML='';
+  forums.forEach(f=>{
+    const threads=sampleThreads[f.id]||[];
+    const card=document.createElement('div');
+    card.className='forum-card';
+    card.onclick=()=>openForum(f.id);
+    card.innerHTML=`<div class="forum-icon">${f.icon}</div><h3>${f.name}</h3><p>${f.desc.substring(0,80)}...</p><div class="forum-stats"><span class="forum-stat"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> ${f.members} Members</span><span class="forum-stat"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> ${threads.length} Discussions</span></div>`;
+    grid.appendChild(card);
+  });
+}
+
+function openForum(id){
+  currentForum=id;
+  const forum=forums.find(f=>f.id===id);
+  document.getElementById('communityMain').classList.add('hidden');
+  document.getElementById('communityHeader').style.display='none';
+  document.getElementById('forumDetail').classList.add('active');
+  document.getElementById('threadView').classList.remove('active');
+  document.getElementById('threadListView').classList.remove('hidden');
+  document.getElementById('forumDetailHeader').innerHTML=`<h2>${forum.name}</h2><p>${forum.desc}</p><div class="forum-detail-stats"><span class="forum-stat"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> ${forum.members} Members</span></div>`;
+  renderThreads();
+}
+
+function renderThreads(){
+  const list=document.getElementById('threadList');
+  const threads=sampleThreads[currentForum]||[];
+  list.innerHTML='';
+  if(!threads.length){list.innerHTML='<p style="text-align:center;color:var(--text-mid);padding:2rem">No discussions yet. Be the first to start one!</p>';return;}
+  threads.forEach(t=>{
+    const card=document.createElement('div');
+    card.className='thread-card';
+    card.onclick=()=>openThread(t.id);
+    card.innerHTML=`<h4>${t.title}</h4><p>${t.body.substring(0,140)}${t.body.length>140?'...':''}</p><div class="thread-meta"><span>${t.author}</span><span>${t.time}</span><span>${t.comments.length} ${t.comments.length===1?'reply':'replies'}</span></div>`;
+    list.appendChild(card);
+  });
+}
+
+function openThread(id){
+  const threads=sampleThreads[currentForum]||[];
+  currentThread=threads.find(t=>t.id===id);
+  if(!currentThread)return;
+  document.getElementById('threadListView').classList.add('hidden');
+  document.getElementById('threadView').classList.add('active');
+  document.getElementById('threadViewHeader').innerHTML=`<h3>${currentThread.title}</h3><p>${currentThread.body}</p><div class="thread-view-meta">${currentThread.author} · ${currentThread.time}</div>`;
+  renderComments();
+}
+
+function renderComments(){
+  const list=document.getElementById('commentList');
+  list.innerHTML='';
+  if(!currentThread.comments.length){list.innerHTML='<p style="color:var(--text-mid);padding:1rem 0">No replies yet. Be the first to respond.</p>';return;}
+  currentThread.comments.forEach(c=>{
+    const el=document.createElement('div');
+    el.className='comment';
+    el.innerHTML=`<div><span class="comment-author">${c.author}</span><span class="comment-time"> · ${c.time}</span></div><div class="comment-text">${c.text}</div>`;
+    list.appendChild(el);
+  });
+}
+
+// ══════════════════════════════════
+// MODERATION SYSTEM
+// ══════════════════════════════════
+const moderationRules = {
+  // Profanity & slurs (partial list — expand as needed)
+  blocked: [
+    'fuck','shit','damn','ass','bitch','bastard','crap','dick','piss',
+    'slut','whore','hoe','nigger','nigga','faggot','retard','retarded',
+    'kill yourself','kys','go die','end it all',
+    'pills to','how to hurt','cut myself','hang myself',
+    'meth','heroin','cocaine','fentanyl','dealer','plug',
+    'http://','https://','www.','.com','.net','.org','.io',
+    'buy now','click here','free money','earn cash','dm me',
+    'idiot','stupid','dumb','loser','pathetic','worthless','disgusting',
+    'hate you','i hate','shut up','stfu','gtfo','lmao','lmfao'
+  ],
+  // Patterns that trigger a gentler warning
+  flagged: [
+    'suicide method','how to die','want to die','no reason to live',
+    'nobody cares','better off dead','can\'t go on'
+  ],
+  maxLength: 2000,
+  minLength: 10
+};
+
+function moderate(text) {
+  const lower = text.toLowerCase();
+
+  // Check length
+  if (text.length < moderationRules.minLength) {
+    return { pass: false, reason: 'Your message is too short. Please share a bit more so others can understand and respond.' };
+  }
+  if (text.length > moderationRules.maxLength) {
+    return { pass: false, reason: 'Your message exceeds the ' + moderationRules.maxLength + ' character limit. Please shorten it.' };
+  }
+
+  // Check flagged phrases (crisis-sensitive — show resources, don't block)
+  for (const phrase of moderationRules.flagged) {
+    if (lower.includes(phrase)) {
+      return {
+        pass: false,
+        reason: 'It sounds like you may be going through something very serious right now. Please reach out for immediate support:\n\n• Call or text 988 (Suicide & Crisis Lifeline — free, 24/7)\n• Text HELLO to 741741 (Crisis Text Line)\n\nYou are not alone. A trained counselor can help right now.',
+        crisis: true
+      };
+    }
+  }
+
+  // Check blocked words
+  for (const word of moderationRules.blocked) {
+    // Match whole words for short terms, substring for longer phrases/URLs
+    if (word.length <= 5) {
+      const regex = new RegExp('\\b' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
+      if (regex.test(text)) {
+        return { pass: false, reason: 'Your message contains language that doesn\'t align with our community guidelines. This is a safe, respectful space — please revise your message and try again.' };
+      }
+    } else {
+      if (lower.includes(word)) {
+        return { pass: false, reason: 'Your message contains content that isn\'t permitted in our community forums. Please revise and try again.' };
+      }
+    }
+  }
+
+  // Check for ALL CAPS shouting (more than 60% caps in messages over 20 chars)
+  if (text.length > 20) {
+    const capsCount = (text.match(/[A-Z]/g) || []).length;
+    const letterCount = (text.match(/[a-zA-Z]/g) || []).length;
+    if (letterCount > 0 && capsCount / letterCount > 0.6) {
+      return { pass: false, reason: 'It looks like your message is mostly in caps. In our community, that can feel like shouting. Please rewrite in normal case — your words carry weight either way.' };
+    }
+  }
+
+  // Check for excessive repetition (spam)
+  const words = lower.split(/\s+/);
+  if (words.length > 5) {
+    const unique = new Set(words);
+    if (unique.size / words.length < 0.3) {
+      return { pass: false, reason: 'Your message appears to contain repetitive content. Please share a thoughtful message so others can engage meaningfully.' };
+    }
+  }
+
+  return { pass: true };
+}
+
+function showModAlert(msg, crisis) {
+  // Remove existing alerts
+  document.querySelectorAll('.mod-alert').forEach(el => el.remove());
+  const alert = document.createElement('div');
+  alert.className = 'mod-alert';
+  alert.style.cssText = 'margin-top:1rem;padding:1.25rem;border-radius:4px;font-size:.85rem;line-height:1.6;white-space:pre-line;' +
+    (crisis
+      ? 'background:#fef2f2;border:1px solid #c44040;color:#991b1b;'
+      : 'background:#fffbeb;border:1px solid #c8a45e;color:#92400e;');
+  alert.innerHTML = (crisis ? '<strong style="display:block;margin-bottom:.5rem">⚠ We Care About You</strong>' : '<strong style="display:block;margin-bottom:.5rem">Community Guidelines</strong>') + msg;
+  // Find the active form and append alert after it
+  const activeForm = document.querySelector('.thread-view.active .comment-form') || document.querySelector('.thread-list-view:not(.hidden) .new-thread-form');
+  if (activeForm) activeForm.appendChild(alert);
+  // Auto-remove after 8 seconds (unless crisis)
+  if (!crisis) setTimeout(() => alert.remove(), 8000);
+}
+
+function postComment(){
+  const author=document.getElementById('commentAuthor').value.trim()||'Anonymous';
+  const body=document.getElementById('commentBody').value.trim();
+  if(!body)return;
+  const check = moderate(body);
+  if(!check.pass){ showModAlert(check.reason, check.crisis); return; }
+  const nameCheck = moderate(author);
+  if(!nameCheck.pass){ showModAlert('Please use an appropriate display name.'); return; }
+  currentThread.comments.push({author,text:body,time:'Just now'});
+  document.getElementById('commentAuthor').value='';
+  document.getElementById('commentBody').value='';
+  document.querySelectorAll('.mod-alert').forEach(el => el.remove());
+  renderComments();
+}
+
+function postThread(){
+  const title=document.getElementById('newThreadTitle').value.trim();
+  const body=document.getElementById('newThreadBody').value.trim();
+  const author=document.getElementById('newThreadAuthor').value.trim()||'Anonymous';
+  if(!title||!body)return;
+  const titleCheck = moderate(title);
+  if(!titleCheck.pass){ showModAlert(titleCheck.reason, titleCheck.crisis); return; }
+  const bodyCheck = moderate(body);
+  if(!bodyCheck.pass){ showModAlert(bodyCheck.reason, bodyCheck.crisis); return; }
+  const nameCheck = moderate(author);
+  if(!nameCheck.pass){ showModAlert('Please use an appropriate display name.'); return; }
+  if(!sampleThreads[currentForum])sampleThreads[currentForum]=[];
+  sampleThreads[currentForum].unshift({id:Date.now(),title,body,author,time:'Just now',comments:[]});
+  document.getElementById('newThreadTitle').value='';
+  document.getElementById('newThreadBody').value='';
+  document.getElementById('newThreadAuthor').value='';
+  document.querySelectorAll('.mod-alert').forEach(el => el.remove());
+  renderThreads();
+}
+
+function backToForums(){
+  document.getElementById('forumDetail').classList.remove('active');
+  document.getElementById('communityMain').classList.remove('hidden');
+  document.getElementById('communityHeader').style.display='';
+  currentForum=null;
+}
+
+function backToThreads(){
+  document.getElementById('threadView').classList.remove('active');
+  document.getElementById('threadListView').classList.remove('hidden');
+  currentThread=null;
+}
+
+renderForumGrid();
+
+// Tab switching - use res-tab and res-panel classes
+document.querySelectorAll('.res-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.res-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.res-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Auto-activate tab from URL hash
+(function(){
+  const hash = window.location.hash.replace('#','');
+  if(hash && document.getElementById(hash)){
+    document.querySelectorAll('.res-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.res-panel').forEach(p => p.classList.remove('active'));
+    const tab = document.querySelector('.res-tab[data-tab="'+hash+'"]');
+    if(tab) tab.classList.add('active');
+    document.getElementById(hash).classList.add('active');
+    setTimeout(()=>{ document.getElementById(hash).scrollIntoView({behavior:'smooth',block:'start'}); },100);
+  }
+})();
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if(typeof renderResources==='function') renderResources(btn.dataset.filter);
+  });
+});
+</script>
+</body>
+</html>

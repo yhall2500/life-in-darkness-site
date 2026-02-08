@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bring Life in Darkness programs to your church or faith community. Evidence-based emotional wellness resources that integrate biblical wisdom.">
+  <title>Faith Communities | Life in Darkness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+.fc-programs{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.fc-card{background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:2rem;transition:all .3s}
+.fc-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.fc-card-icon{width:44px;height:44px;margin-bottom:1.25rem}
+.fc-card-icon svg{width:100%;height:100%;fill:none;stroke:var(--lid-green);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--text-dark);margin-bottom:.5rem}
+.fc-card p{font-size:.85rem;line-height:1.6;color:var(--text-mid)}
+.fc-card .fc-detail{margin-top:1rem;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lid-green)}
+.fc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;text-align:center}
+.fc-step{position:relative}
+.fc-step-num{width:48px;height:48px;border-radius:50%;background:var(--lid-green);color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.3rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.fc-step h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--text-dark);margin-bottom:.5rem}
+.fc-step p{font-size:.8rem;line-height:1.5;color:var(--text-mid)}
+.fc-testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.fc-testimonial{background:var(--white);border:1px solid rgba(42,37,32,.06);border-radius:4px;padding:2rem}
+.fc-testimonial blockquote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--text-dark);line-height:1.5;margin:0}
+.fc-testimonial cite{display:block;margin-top:1rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-style:normal;font-weight:600;color:var(--lid-green)}
+.fc-faq{max-width:700px;margin:2.5rem auto 0}
+.fc-faq-item{border-bottom:1px solid rgba(42,37,32,.08);padding:1.25rem 0}
+.fc-faq-item:last-child{border-bottom:none}
+.fc-faq-q{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;color:var(--text-dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fc-faq-q::after{content:'+';font-size:1.2rem;color:var(--lid-green);transition:transform .3s}
+.fc-faq-item.open .fc-faq-q::after{transform:rotate(45deg)}
+.fc-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:.85rem;line-height:1.6;color:var(--text-mid)}
+.fc-faq-item.open .fc-faq-a{max-height:200px;padding-top:.75rem}
+.fc-form{max-width:700px;margin:0 auto;background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.fc-form h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text-dark);margin-bottom:1.5rem;text-align:center}
+.fc-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fc-form input,.fc-form textarea,.fc-form select{width:100%;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);outline:none;transition:border-color .3s;box-sizing:border-box}
+.fc-form input:focus,.fc-form textarea:focus,.fc-form select:focus{border-color:var(--lid-green)}
+.fc-form textarea{min-height:100px;resize:vertical}
+.fc-form label{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid);margin-bottom:.4rem}
+.fc-form .form-full{margin-bottom:1rem}
+.fc-form button{display:block;width:100%;padding:.9rem;margin-top:1.5rem;background:var(--lid-green);color:var(--white);border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.fc-form button:hover{background:var(--lid-green-light)}
+.fc-scripture{max-width:600px;margin:2.5rem auto 0;text-align:center;padding:2rem;border-left:3px solid var(--warm-gold);background:rgba(200,164,94,.04);border-radius:0 4px 4px 0}
+.fc-scripture p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--text-dark);line-height:1.5}
+.fc-scripture cite{display:block;margin-top:.75rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-style:normal;font-weight:600;color:var(--warm-gold)}
+@media(max-width:768px){.fc-programs,.fc-testimonials{grid-template-columns:1fr}.fc-steps{grid-template-columns:repeat(2,1fr)}.fc-form .form-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div>
+    <div class="nav-logo-text">Life in <span>Darkness</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="help.html">Get Help</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="donate.html">Give</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="tel:988" class="nav-cta">Crisis Line: 988</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<main>
+  <section class="page-hero">
+    <div class="section-label">Extend Your Ministry</div>
+    <h1>Faith <em>Communities</em></h1>
+    <p>Bring evidence-based emotional wellness programs into your church, small group, or ministry. Biblical wisdom meets brain science.</p>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Our Approach</div>
+      <div class="section-title">Why Churches Trust Life in Darkness</div>
+      <p class="section-desc" style="max-width:700px;margin-left:auto;margin-right:auto;">Too often, congregations lack the tools to address grief, addiction, family fracture, and emotional burnout beyond a prayer request card. Life in Darkness provides structured, evidence-based programs that honor both clinical research and biblical truth. We do not replace pastoral care. We equip it.</p>
+      <div class="fc-scripture">
+        <p>"Bear one another's burdens, and so fulfill the law of Christ."</p>
+        <cite>Galatians 6:2</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Programs for Churches</div>
+      <div class="section-title">What We Bring to Your Community</div>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Each program comes with facilitator training, participant materials, and ongoing support from our team.</p>
+      <div class="fc-programs" style="text-align:left;">
+        <div class="fc-card">
+          <div class="fc-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3>Grief Recovery Groups</h3>
+          <p>An 8-week small group curriculum for adults processing loss. Integrates the Emotional Portfolio framework with scriptural reflection, journaling, and peer support. Designed for lay facilitators with full training provided.</p>
+          <div class="fc-detail">8 weeks &middot; small group &middot; faith-integrated</div>
+        </div>
+        <div class="fc-card">
+          <div class="fc-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h3>The Blended Family Project</h3>
+          <p>Trauma-informed training for blended families navigating the complexities of merging households. Covers loyalty binds, co-parenting, step-parenting boundaries, and building family identity through a biblical lens.</p>
+          <div class="fc-detail">6 weeks &middot; couples + families &middot; faith-integrated</div>
+        </div>
+        <div class="fc-card">
+          <div class="fc-card-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3>Caregiver Support Ministry</h3>
+          <p>Resources and small group structure for church members caring for aging parents, chronically ill spouses, or special needs children. Addresses burnout, anticipatory grief, identity loss, and spiritual sustenance.</p>
+          <div class="fc-detail">Ongoing &middot; support group &middot; faith-integrated</div>
+        </div>
+        <div class="fc-card">
+          <div class="fc-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <h3>Suicide Prevention &amp; Awareness</h3>
+          <p>Equip your congregation to recognize warning signs, respond with compassion, and create a culture where people feel safe asking for help. Includes gatekeeper training for pastors, elders, and small group leaders.</p>
+          <div class="fc-detail">Workshop + ongoing resources &middot; faith-integrated</div>
+        </div>
+        <div class="fc-card">
+          <div class="fc-card-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <h3>Emotional Stewardship Bible Study</h3>
+          <p>A 6-week study exploring the biblical foundations of emotional health. Topics include stewardship of grief, the theology of feelings, forgiveness as process, and building resilience through faith.</p>
+          <div class="fc-detail">6 weeks &middot; small group &middot; study guide included</div>
+        </div>
+        <div class="fc-card">
+          <div class="fc-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h3>Veteran &amp; First Responder Ministry</h3>
+          <p>Specialized support for service members and their families within your congregation. Addresses moral injury, survivor guilt, transition challenges, and the unique intersection of faith and military service.</p>
+          <div class="fc-detail">Flexible format &middot; veteran-led &middot; faith-integrated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">How It Works</div>
+      <div class="section-title">Getting Started Is Simple</div>
+      <div class="fc-steps">
+        <div class="fc-step">
+          <div class="fc-step-num">1</div>
+          <h4>Reach Out</h4>
+          <p>Fill out the form below or contact us directly. Tell us about your church and the needs you see in your congregation.</p>
+        </div>
+        <div class="fc-step">
+          <div class="fc-step-num">2</div>
+          <h4>Consultation</h4>
+          <p>We meet with your pastoral team to understand your community, select the right programs, and plan implementation.</p>
+        </div>
+        <div class="fc-step">
+          <div class="fc-step-num">3</div>
+          <h4>Training</h4>
+          <p>We train your facilitators with everything they need: curriculum, guides, and ongoing support from our team.</p>
+        </div>
+        <div class="fc-step">
+          <div class="fc-step-num">4</div>
+          <h4>Launch</h4>
+          <p>Your church launches the program. We stay alongside you with check-ins, resources, and community connection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Voices From the Pew</div>
+      <div class="section-title">What Churches Are Saying</div>
+      <div class="fc-testimonials">
+        <div class="fc-testimonial">
+          <blockquote>"We had been doing grief ministry for years with good intentions but no real structure. Life in Darkness gave us a framework that honored both the science and the Scripture. Our facilitators feel equipped, not overwhelmed."</blockquote>
+          <cite>Pastor Mark, Community Bible Church</cite>
+        </div>
+        <div class="fc-testimonial">
+          <blockquote>"The Blended Family Project filled a gap we did not even know we had. Over 40% of our families are blended and they had been suffering in silence. This program gave them language, tools, and community."</blockquote>
+          <cite>Associate Pastor Renee, Grace Fellowship</cite>
+        </div>
+        <div class="fc-testimonial">
+          <blockquote>"After the suicide prevention training, three members came forward to share that they had been struggling. Three people who might have stayed silent. That training saved lives in our church."</blockquote>
+          <cite>Elder Board Chair, New Hope Church</cite>
+        </div>
+        <div class="fc-testimonial">
+          <blockquote>"The Emotional Stewardship Bible Study changed how our women's ministry approaches feelings. We went from 'pray harder' to 'let us sit with this together.' The shift has been profound."</blockquote>
+          <cite>Women's Ministry Director, Faith Harbor</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Common Questions</div>
+      <div class="section-title">FAQ for Church Leaders</div>
+      <div class="fc-faq" style="text-align:left;">
+        <div class="fc-faq-item">
+          <div class="fc-faq-q" onclick="this.parentElement.classList.toggle('open')">Is this a replacement for pastoral counseling?</div>
+          <div class="fc-faq-a">Not at all. Our programs are designed to complement pastoral care, not replace it. We provide structured group curriculum that equips lay leaders to facilitate healing conversations. For clinical needs, we always recommend professional referrals.</div>
+        </div>
+        <div class="fc-faq-item">
+          <div class="fc-faq-q" onclick="this.parentElement.classList.toggle('open')">Do facilitators need clinical training?</div>
+          <div class="fc-faq-a">No. Our programs are designed for lay facilitators with willing hearts. We provide comprehensive training that covers facilitation skills, boundary-setting, when to refer, and how to create a safe group environment. Most facilitators complete training in a single day.</div>
+        </div>
+        <div class="fc-faq-item">
+          <div class="fc-faq-q" onclick="this.parentElement.classList.toggle('open')">How much does it cost?</div>
+          <div class="fc-faq-a">We offer a sliding scale based on church size and resources. Our goal is to make these programs accessible to every congregation regardless of budget. Many churches cover costs through existing ministry budgets, small grants, or partnership with other local churches.</div>
+        </div>
+        <div class="fc-faq-item">
+          <div class="fc-faq-q" onclick="this.parentElement.classList.toggle('open')">Are the programs denomination-specific?</div>
+          <div class="fc-faq-a">No. Our faith-integrated content draws from broadly shared Christian Scripture and values. We have partnered with Baptist, Methodist, non-denominational, Pentecostal, Catholic, and AME congregations. The framework is adaptable to your theological context.</div>
+        </div>
+        <div class="fc-faq-item">
+          <div class="fc-faq-q" onclick="this.parentElement.classList.toggle('open')">Can we run multiple programs at once?</div>
+          <div class="fc-faq-a">Absolutely. Many of our partner churches run two or three programs simultaneously. For example, a grief recovery group and a caregiver support group can run in parallel, serving different needs within the same congregation.</div>
+        </div>
+        <div class="fc-faq-item">
+          <div class="fc-faq-q" onclick="this.parentElement.classList.toggle('open')">What about churches in rural or underserved areas?</div>
+          <div class="fc-faq-a">Those are exactly the communities we exist to serve. We offer virtual facilitator training, digital curriculum options, and reduced-cost partnerships for churches in under-resourced areas. Distance is not a barrier.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fc-form">
+        <h3>Bring LID to Your Church</h3>
+        <div class="form-row">
+          <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
+          <div><label>Role</label><input type="text" placeholder="Pastor, Elder, Ministry Leader, etc."></div>
+        </div>
+        <div class="form-row">
+          <div><label>Church Name</label><input type="text" placeholder="Your church or ministry"></div>
+          <div><label>Approximate Congregation Size</label>
+            <select>
+              <option value="">Select...</option>
+              <option>Under 100</option>
+              <option>100 - 250</option>
+              <option>250 - 500</option>
+              <option>500 - 1,000</option>
+              <option>1,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div><label>Email</label><input type="email" placeholder="your@email.com"></div>
+          <div><label>Phone</label><input type="tel" placeholder="(000) 000-0000"></div>
+        </div>
+        <div class="form-full">
+          <label>Programs of Interest</label>
+          <select>
+            <option value="">Select a program...</option>
+            <option>Grief Recovery Groups</option>
+            <option>The Blended Family Project</option>
+            <option>Caregiver Support Ministry</option>
+            <option>Suicide Prevention &amp; Awareness</option>
+            <option>Emotional Stewardship Bible Study</option>
+            <option>Veteran &amp; First Responder Ministry</option>
+            <option>Multiple Programs / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-full">
+          <label>Tell Us About Your Needs</label>
+          <textarea placeholder="What needs are you seeing in your congregation? What has been tried before? Any specific challenges or goals?"></textarea>
+        </div>
+        <button type="button">Request a Consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="eqgenix-bridge">
+    <div class="bridge-inner">
+      <div>
+        <div class="bridge-logo">EQGenix</div>
+        <div class="bridge-logo-sub">Emotional &amp; Cognitive Wealth Advisors</div>
+      </div>
+      <div class="bridge-text">
+        <p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h3>Stay Connected to the Light</h3>
+    <p>Mental health insights, community stories, and program updates, delivered with care.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address" aria-label="Email address">
+      <button type="button">Subscribe</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><div style="display:flex;align-items:center;gap:.75rem"><div class="nav-logo-icon" style="width:24px;height:36px"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div><div class="nav-logo-text" style="font-size:1.1rem">Life in <span>Darkness</span></div></div><p>An independent 501(c)(3) nonprofit delivering evidence-based emotional and cognitive wellness programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p></div><div class="footer-col"><h4>Programs</h4><a href="programs.html#suicide-prevention">Suicide Prevention</a><a href="programs.html#grief-recovery">Grief Recovery</a><a href="programs.html#family-healing">Family Healing</a><a href="programs.html#youth-resiliency">Youth Resiliency</a><a href="programs.html#addiction-support">Addiction Support</a></div><div class="footer-col"><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="volunteer.html">Volunteer</a><a href="partners.html">Corporate Partners</a><a href="faith.html">Faith Communities</a></div><div class="footer-col"><h4>Connect</h4><a href="help.html">Get Help Now</a><a href="about.html">Our Story</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a></div></div><div class="footer-bottom"><p>&copy; 2024 Life in Darkness. All rights reserved. EIN: 33-1336378</p></div></footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

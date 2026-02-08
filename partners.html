@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Partner with Life in Darkness. Corporate sponsorship and partnership opportunities to advance emotional wellness in underserved communities.">
+  <title>Corporate Partners | Life in Darkness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+.partner-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.tier-card{background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:2.5rem 2rem;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.tier-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.tier-card.featured{border-color:var(--lid-green);box-shadow:0 4px 24px rgba(58,84,56,.1);padding-top:3.5rem}
+.tier-card.featured::before{content:'MOST POPULAR';position:absolute;top:0;left:0;right:0;background:var(--lid-green);color:var(--white);font-size:.6rem;font-weight:700;letter-spacing:.15em;padding:.5rem 0;text-align:center}
+.tier-name{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--lid-green);margin-bottom:.75rem}
+.tier-amount{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400;color:var(--text-dark)}
+.tier-period{font-size:.8rem;color:var(--text-mid);margin-top:.25rem;margin-bottom:1.5rem}
+.tier-features{list-style:none;padding:0;margin:0;text-align:left}
+.tier-features li{padding:.6rem 0;font-size:.85rem;color:var(--text-dark);border-bottom:1px solid rgba(42,37,32,.06);display:flex;align-items:flex-start;gap:.5rem}
+.tier-features li:last-child{border-bottom:none}
+.tier-features li::before{content:'✓';color:var(--lid-green);font-weight:700;flex-shrink:0}
+.tier-cta{display:inline-block;margin-top:1.5rem;padding:.8rem 2rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all .3s;text-decoration:none}
+.tier-cta-primary{background:var(--lid-green);color:var(--white);border:none}
+.tier-cta-primary:hover{background:var(--lid-green-light)}
+.tier-cta-outline{background:transparent;color:var(--lid-green);border:1px solid var(--lid-green)}
+.tier-cta-outline:hover{background:var(--lid-green);color:var(--white)}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2.5rem;text-align:center}
+.impact-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400;color:var(--warm-gold)}
+.impact-label{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid);margin-top:.25rem}
+.partner-ways{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.partner-way{background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:2rem;transition:all .3s}
+.partner-way:hover{box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.partner-way h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--text-dark);margin-bottom:.5rem}
+.partner-way p{font-size:.85rem;line-height:1.6;color:var(--text-mid)}
+.partner-form{max-width:700px;margin:0 auto;background:var(--white);border:1px solid rgba(42,37,32,.08);border-radius:4px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.partner-form h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text-dark);margin-bottom:1.5rem;text-align:center}
+.partner-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.partner-form input,.partner-form textarea,.partner-form select{width:100%;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);outline:none;transition:border-color .3s;box-sizing:border-box}
+.partner-form input:focus,.partner-form textarea:focus,.partner-form select:focus{border-color:var(--lid-green)}
+.partner-form textarea{min-height:100px;resize:vertical}
+.partner-form label{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid);margin-bottom:.4rem}
+.partner-form .form-full{margin-bottom:1rem}
+.partner-form button{display:block;width:100%;padding:.9rem;margin-top:1.5rem;background:var(--lid-green);color:var(--white);border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.partner-form button:hover{background:var(--lid-green-light)}
+.testimonial-block{max-width:700px;margin:2.5rem auto 0;text-align:center;padding:2.5rem;background:var(--white);border-radius:4px;border:1px solid rgba(42,37,32,.06)}
+.testimonial-block blockquote{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--text-dark);line-height:1.5;margin:0}
+.testimonial-block cite{display:block;margin-top:1rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-style:normal;font-weight:600;color:var(--lid-green)}
+@media(max-width:768px){.partner-tiers,.partner-ways{grid-template-columns:1fr}.impact-grid{grid-template-columns:repeat(2,1fr)}.partner-form .form-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div>
+    <div class="nav-logo-text">Life in <span>Darkness</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="help.html">Get Help</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="donate.html">Give</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="tel:988" class="nav-cta">Crisis Line: 988</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<main>
+  <section class="page-hero">
+    <div class="section-label">Build With Us</div>
+    <h1>Corporate <em>Partners</em></h1>
+    <p>Align your organization with a mission that delivers measurable impact in emotional wellness, grief recovery, and community resilience.</p>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Our Impact</div>
+      <div class="section-title">What Your Partnership Powers</div>
+      <p class="section-desc" style="max-width:650px;margin-left:auto;margin-right:auto;">Every corporate partnership directly funds program delivery in underserved communities. Your investment is not overhead. It is outcomes.</p>
+      <div class="impact-grid">
+        <div><div class="impact-num">500+</div><div class="impact-label">Lives Reached Annually</div></div>
+        <div><div class="impact-num">5</div><div class="impact-label">Core Programs</div></div>
+        <div><div class="impact-num">92%</div><div class="impact-label">Participant Completion Rate</div></div>
+        <div><div class="impact-num">100%</div><div class="impact-label">Tax Deductible</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Partnership Tiers</div>
+      <div class="section-title">Choose Your Level of Impact</div>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Each tier includes brand visibility, employee engagement opportunities, and direct community impact.</p>
+      <div class="partner-tiers" style="text-align:center;">
+        <div class="tier-card">
+          <div class="tier-name">Community Builder</div>
+          <div class="tier-amount">$5,000</div>
+          <div class="tier-period">Annual Partnership</div>
+          <ul class="tier-features">
+            <li>Logo on LID website and materials</li>
+            <li>Quarterly impact reports</li>
+            <li>Social media recognition</li>
+            <li>Sponsor one community workshop</li>
+            <li>Certificate of partnership</li>
+          </ul>
+          <a href="contact.html" class="tier-cta tier-cta-outline">Get Started</a>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-name">Impact Partner</div>
+          <div class="tier-amount">$15,000</div>
+          <div class="tier-period">Annual Partnership</div>
+          <ul class="tier-features">
+            <li>Everything in Community Builder</li>
+            <li>Co-branded program materials</li>
+            <li>Employee wellness workshops (4/year)</li>
+            <li>Sponsor a full program cycle</li>
+            <li>Featured partner spotlight story</li>
+            <li>Dedicated partnership manager</li>
+          </ul>
+          <a href="contact.html" class="tier-cta tier-cta-primary">Get Started</a>
+        </div>
+        <div class="tier-card">
+          <div class="tier-name">Founding Pillar</div>
+          <div class="tier-amount">$50,000+</div>
+          <div class="tier-period">Annual Partnership</div>
+          <ul class="tier-features">
+            <li>Everything in Impact Partner</li>
+            <li>Named program sponsorship</li>
+            <li>Custom employee EQ training series</li>
+            <li>Board advisory access</li>
+            <li>Annual impact gala recognition</li>
+            <li>Custom community investment strategy</li>
+          </ul>
+          <a href="contact.html" class="tier-cta tier-cta-outline">Let's Talk</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-warm">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">Beyond Sponsorship</div>
+      <div class="section-title">Other Ways to Partner</div>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Financial sponsorship is one path. We also welcome creative, in-kind, and strategic partnerships.</p>
+      <div class="partner-ways" style="text-align:left;">
+        <div class="partner-way">
+          <h3>Employee Wellness Programs</h3>
+          <p>Bring The Sovereign Workforce training to your organization. Evidence-based emotional intelligence workshops customized for corporate teams, delivered by certified EQGenix facilitators.</p>
+        </div>
+        <div class="partner-way">
+          <h3>Workplace Giving &amp; Matching</h3>
+          <p>Set up Life in Darkness as a workplace giving option for employees. Matching gift programs double the impact of individual contributions to our mission.</p>
+        </div>
+        <div class="partner-way">
+          <h3>In-Kind Donations</h3>
+          <p>Contribute professional services, technology, event space, printing, or supplies. These contributions directly reduce our overhead and maximize program delivery.</p>
+        </div>
+        <div class="partner-way">
+          <h3>Event Sponsorship</h3>
+          <p>Sponsor community events, awareness campaigns, or our annual gala. Put your brand in front of an engaged, purpose-driven audience.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-block">
+        <blockquote>"Partnering with Life in Darkness gave our team more than a CSR initiative. It gave us a shared language for emotional wellness that transformed how we lead, communicate, and support one another."</blockquote>
+        <cite>Corporate Partner, 2024</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="partner-form">
+        <h3>Start a Partnership Conversation</h3>
+        <p style="text-align:center;font-size:.85rem;color:var(--text-mid);margin-bottom:1.5rem;margin-top:-.5rem;">We'll follow up personally to learn more about your goals and explore a partnership that aligns with your organization.</p>
+        <div class="form-row">
+          <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
+          <div><label>Title</label><input type="text" placeholder="Your role"></div>
+        </div>
+        <div class="form-row">
+          <div><label>Company</label><input type="text" placeholder="Organization name"></div>
+          <div><label>Email</label><input type="email" placeholder="work@company.com"></div>
+        </div>
+        <div class="form-full">
+          <label>Partnership Interest</label>
+          <select>
+            <option value="">How would you like to partner?</option>
+            <option>Corporate Sponsorship Tier</option>
+            <option>Employee Wellness Programs</option>
+            <option>Workplace Giving / Matching</option>
+            <option>Event Sponsorship</option>
+            <option>In-Kind Partnership</option>
+            <option>Custom / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-full">
+          <label>Tell Us About Your Vision</label>
+          <textarea placeholder="What interests you about partnering with Life in Darkness? Any specific goals or programs you'd like to support?"></textarea>
+        </div>
+        <button type="button">Submit Inquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="eqgenix-bridge">
+    <div class="bridge-inner">
+      <div>
+        <div class="bridge-logo">EQGenix</div>
+        <div class="bridge-logo-sub">Emotional &amp; Cognitive Wealth Advisors</div>
+      </div>
+      <div class="bridge-text">
+        <p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h3>Stay Connected to the Light</h3>
+    <p>Mental health insights, community stories, and program updates, delivered with care.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address" aria-label="Email address">
+      <button type="button">Subscribe</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><div style="display:flex;align-items:center;gap:.35rem"><div class="nav-logo-icon" style="width:24px;height:36px"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div><div class="nav-logo-text" style="font-size:1.1rem">Life in <span>Darkness</span></div></div><p>An independent 501(c)(3) nonprofit delivering evidence-based emotional and cognitive wellness programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p></div><div class="footer-col"><h4>Programs</h4><a href="programs.html#suicide-prevention">Suicide Prevention</a><a href="programs.html#grief-recovery">Grief Recovery</a><a href="programs.html#family-healing">Family Healing</a><a href="programs.html#youth-resiliency">Youth Resiliency</a><a href="programs.html#addiction-support">Addiction Support</a></div><div class="footer-col"><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="volunteer.html">Volunteer</a><a href="partners.html">Corporate Partners</a><a href="resources.html#community">Community Forum</a><a href="faith.html">Faith Communities</a></div><div class="footer-col"><h4>Connect</h4><a href="help.html">Get Help Now</a><a href="about.html">Our Story</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a></div></div><div class="footer-bottom"><p>&copy; 2024 Life in Darkness. All rights reserved. EIN: 33-1336378</p><div class="footer-powered">Core frameworks licensed from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a> &middot; Built, Not Downloaded.&trade;</div></div></footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
