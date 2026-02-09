@@ -129,3 +129,37 @@
   });
 })();
 
+
+/* ═══════════════════════════════════════
+   FORM AJAX SUBMISSION — stay on page
+   ═══════════════════════════════════════ */
+(function() {
+  var forms = document.querySelectorAll('form[data-netlify="true"]:not(.newsletter-form)');
+  forms.forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var origText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      var formData = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(function() {
+        form.innerHTML = '<div style="text-align:center;padding:3rem 1rem;">' +
+          '<div style="width:56px;height:56px;margin:0 auto 1.25rem;border-radius:50%;background:#3a5438;display:flex;align-items:center;justify-content:center;">' +
+          '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+          '<h3 style="font-family:Cormorant Garamond,serif;font-size:1.8rem;font-weight:400;color:#2a2520;margin-bottom:.5rem;">Thank You</h3>' +
+          '<p style="font-family:DM Sans,sans-serif;font-size:.95rem;color:#6b6560;line-height:1.6;">Your message has been received. A real person on our team will follow up with you personally.</p>' +
+          '</div>';
+      }).catch(function() {
+        btn.textContent = 'Error — please try again';
+        btn.disabled = false;
+        setTimeout(function() { btn.textContent = origText; }, 3000);
+      });
+    });
+  });
+})();
