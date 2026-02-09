@@ -1121,6 +1121,10 @@ body {
   .mobile-toggle { display: flex; }
   .section { padding: 4rem 1.5rem; }
   .hero { padding: 6rem 1.5rem 4rem; }
+  .hero h1 { font-size: 2.5rem; }
+  .page-hero h1 { font-size: 2rem; }
+  .page-hero { padding: 6rem 1.5rem 3rem; }
+  .section-title { font-size: 1.6rem; }
   .pillars-grid { grid-template-columns: 1fr; }
   .programs-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; }
@@ -1130,6 +1134,15 @@ body {
   .bridge-inner { grid-template-columns: 1fr; text-align: center; }
   .impact-bar { gap: 2rem; }
   .transparency-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 0.5rem; }
+  .about-photo { height: 300px; }
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { width: 100%; }
+  .newsletter-form button { width: 100%; }
+  .eqgenix-bridge { padding: 2rem 1.5rem; }
+  .bridge-logo { font-size: 1.3rem; }
+  .footer-bottom { text-align: center; font-size: 0.75rem; }
+  .footer-powered { font-size: 0.7rem; text-align: center; }
 }
 
 /* ─── ACTIVE NAV LINK ─── */

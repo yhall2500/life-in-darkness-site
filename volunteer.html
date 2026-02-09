@@ -121,19 +121,21 @@
 
   <section class="section section-warm">
     <div class="container">
-      <div class="vol-form">
+      <form name="volunteer" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="vol-form">
+        <input type="hidden" name="form-name" value="volunteer">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <h3>Apply to Volunteer</h3>
         <div class="form-row">
-          <div><label>First Name</label><input type="text" placeholder="First name"></div>
-          <div><label>Last Name</label><input type="text" placeholder="Last name"></div>
+          <div><label>First Name</label><input type="text" name="firstName" placeholder="First name" required></div>
+          <div><label>Last Name</label><input type="text" name="lastName" placeholder="Last name" required></div>
         </div>
         <div class="form-row">
-          <div><label>Email</label><input type="email" placeholder="your@email.com"></div>
-          <div><label>Phone</label><input type="tel" placeholder="(000) 000-0000"></div>
+          <div><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          <div><label>Phone</label><input type="tel" name="phone" placeholder="(000) 000-0000"></div>
         </div>
         <div class="form-full">
           <label>Area of Interest</label>
-          <select>
+          <select name="interest" required>
             <option value="">Select a volunteer role...</option>
             <option>Grief Recovery Facilitator</option>
             <option>Family Healing Mentor</option>
@@ -146,10 +148,10 @@
         </div>
         <div class="form-full">
           <label>Tell Us About Yourself</label>
-          <textarea placeholder="Share a bit about your background, what drew you to Life in Darkness, and how you hope to serve..."></textarea>
+          <textarea name="about" placeholder="Share a bit about your background, what drew you to Life in Darkness, and how you hope to serve..." required></textarea>
         </div>
-        <button type="button">Submit Application</button>
-      </div>
+        <button type="submit">Submit Application</button>
+      </form>
     </div>
   </section>
 
@@ -168,10 +170,10 @@
   <section class="newsletter">
     <h3>Stay Connected to the Light</h3>
     <p>Mental health insights, community stories, and program updates, delivered with care.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Your email address" aria-label="Email address">
-      <button type="button">Subscribe</button>
-    </div>
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
   </section>
 </main>
 

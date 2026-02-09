@@ -224,16 +224,18 @@
 
   <section class="section section-dark">
     <div class="container">
-      <div class="fc-form">
+      <form name="faith-community" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="fc-form">
+        <input type="hidden" name="form-name" value="faith-community">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <h3>Bring LID to Your Church</h3>
         <div class="form-row">
-          <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
-          <div><label>Role</label><input type="text" placeholder="Pastor, Elder, Ministry Leader, etc."></div>
+          <div><label>Your Name</label><input type="text" name="name" placeholder="Full name" required></div>
+          <div><label>Role</label><input type="text" name="role" placeholder="Pastor, Elder, Ministry Leader, etc." required></div>
         </div>
         <div class="form-row">
-          <div><label>Church Name</label><input type="text" placeholder="Your church or ministry"></div>
+          <div><label>Church Name</label><input type="text" name="church" placeholder="Your church or ministry" required></div>
           <div><label>Approximate Congregation Size</label>
-            <select>
+            <select name="congregation-size">
               <option value="">Select...</option>
               <option>Under 100</option>
               <option>100 - 250</option>
@@ -244,12 +246,12 @@
           </div>
         </div>
         <div class="form-row">
-          <div><label>Email</label><input type="email" placeholder="your@email.com"></div>
-          <div><label>Phone</label><input type="tel" placeholder="(000) 000-0000"></div>
+          <div><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          <div><label>Phone</label><input type="tel" name="phone" placeholder="(000) 000-0000"></div>
         </div>
         <div class="form-full">
           <label>Programs of Interest</label>
-          <select>
+          <select name="program">
             <option value="">Select a program...</option>
             <option>Grief Recovery Groups</option>
             <option>The Blended Family Project</option>
@@ -262,10 +264,10 @@
         </div>
         <div class="form-full">
           <label>Tell Us About Your Needs</label>
-          <textarea placeholder="What needs are you seeing in your congregation? What has been tried before? Any specific challenges or goals?"></textarea>
+          <textarea name="needs" placeholder="What needs are you seeing in your congregation? What has been tried before? Any specific challenges or goals?"></textarea>
         </div>
-        <button type="button">Request a Consultation</button>
-      </div>
+        <button type="submit">Request a Consultation</button>
+      </form>
     </div>
   </section>
 
@@ -284,14 +286,14 @@
   <section class="newsletter">
     <h3>Stay Connected to the Light</h3>
     <p>Mental health insights, community stories, and program updates, delivered with care.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Your email address" aria-label="Email address">
-      <button type="button">Subscribe</button>
-    </div>
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
   </section>
 </main>
 
-<footer class="footer"><div class="footer-grid"><div class="footer-brand"><div style="display:flex;align-items:center;gap:.75rem"><div class="nav-logo-icon" style="width:24px;height:36px"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div><div class="nav-logo-text" style="font-size:1.1rem">Life in <span>Darkness</span></div></div><p>An independent 501(c)(3) nonprofit delivering evidence-based emotional and cognitive wellness programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p></div><div class="footer-col"><h4>Programs</h4><a href="programs.html#suicide-prevention">Suicide Prevention</a><a href="programs.html#grief-recovery">Grief Recovery</a><a href="programs.html#family-healing">Family Healing</a><a href="programs.html#youth-resiliency">Youth Resiliency</a><a href="programs.html#addiction-support">Addiction Support</a></div><div class="footer-col"><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="volunteer.html">Volunteer</a><a href="partners.html">Corporate Partners</a><a href="faith.html">Faith Communities</a></div><div class="footer-col"><h4>Connect</h4><a href="help.html">Get Help Now</a><a href="about.html">Our Story</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a></div></div><div class="footer-bottom"><p>&copy; 2024 Life in Darkness. All rights reserved. EIN: 33-1336378</p></div></footer>
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><div style="display:flex;align-items:center;gap:.35rem"><div class="nav-logo-icon" style="width:24px;height:36px"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div><div class="nav-logo-text" style="font-size:1.1rem">Life in <span>Darkness</span></div></div><p>An independent 501(c)(3) nonprofit delivering evidence-based emotional and cognitive wellness programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p></div><div class="footer-col"><h4>Programs</h4><a href="programs.html#suicide-prevention">Suicide Prevention</a><a href="programs.html#grief-recovery">Grief Recovery</a><a href="programs.html#family-healing">Family Healing</a><a href="programs.html#youth-resiliency">Youth Resiliency</a><a href="programs.html#addiction-support">Addiction Support</a></div><div class="footer-col"><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="volunteer.html">Volunteer</a><a href="partners.html">Corporate Partners</a><a href="resources.html#community">Community Forum</a><a href="faith.html">Faith Communities</a></div><div class="footer-col"><h4>Connect</h4><a href="help.html">Get Help Now</a><a href="about.html">Our Story</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a></div></div><div class="footer-bottom"><p>&copy; 2024 Life in Darkness. All rights reserved. EIN: 33-1336378</p><div class="footer-powered">Core frameworks licensed from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a> &middot; Built, Not Downloaded.&trade;</div></div></footer>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

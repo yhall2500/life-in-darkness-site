@@ -94,20 +94,31 @@
   }
 
   /* ═══════════════════════════════════════
-     NEWSLETTER FORM (placeholder handler)
+     NEWSLETTER FORM (Netlify submission)
      ═══════════════════════════════════════ */
-  document.querySelectorAll('.newsletter-form button').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var form = this.closest('.newsletter-form');
-      var input = form ? form.querySelector('input[type="email"]') : null;
+  document.querySelectorAll('.newsletter-form').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = form.querySelector('input[type="email"]');
+      var btn = form.querySelector('button');
       if (input && input.value && input.value.includes('@')) {
-        this.textContent = 'Subscribed ✓';
-        this.style.background = 'var(--lid-green-pale)';
-        input.value = '';
-        setTimeout(function () {
-          btn.textContent = 'Subscribe';
-          btn.style.background = '';
-        }, 3000);
+        var formData = new FormData(form);
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        }).then(function() {
+          btn.textContent = 'Subscribed ✓';
+          btn.style.background = 'var(--lid-green-pale)';
+          input.value = '';
+          setTimeout(function () {
+            btn.textContent = 'Subscribe';
+            btn.style.background = '';
+          }, 3000);
+        }).catch(function() {
+          btn.textContent = 'Error — try again';
+          setTimeout(function () { btn.textContent = 'Subscribe'; }, 3000);
+        });
       } else if (input) {
         input.style.borderColor = 'var(--accent-rose)';
         setTimeout(function () {

@@ -176,20 +176,22 @@
 
   <section class="section section-dark">
     <div class="container">
-      <div class="partner-form">
+      <form name="partnership" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="partner-form">
+        <input type="hidden" name="form-name" value="partnership">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <h3>Start a Partnership Conversation</h3>
         <p style="text-align:center;font-size:.85rem;color:var(--text-mid);margin-bottom:1.5rem;margin-top:-.5rem;">We'll follow up personally to learn more about your goals and explore a partnership that aligns with your organization.</p>
         <div class="form-row">
-          <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
-          <div><label>Title</label><input type="text" placeholder="Your role"></div>
+          <div><label>Your Name</label><input type="text" name="name" placeholder="Full name" required></div>
+          <div><label>Title</label><input type="text" name="title" placeholder="Your role"></div>
         </div>
         <div class="form-row">
-          <div><label>Company</label><input type="text" placeholder="Organization name"></div>
-          <div><label>Email</label><input type="email" placeholder="work@company.com"></div>
+          <div><label>Company</label><input type="text" name="company" placeholder="Organization name" required></div>
+          <div><label>Email</label><input type="email" name="email" placeholder="work@company.com" required></div>
         </div>
         <div class="form-full">
           <label>Partnership Interest</label>
-          <select>
+          <select name="interest" required>
             <option value="">How would you like to partner?</option>
             <option>Corporate Sponsorship Tier</option>
             <option>Employee Wellness Programs</option>
@@ -201,10 +203,10 @@
         </div>
         <div class="form-full">
           <label>Tell Us About Your Vision</label>
-          <textarea placeholder="What interests you about partnering with Life in Darkness? Any specific goals or programs you'd like to support?"></textarea>
+          <textarea name="vision" placeholder="What interests you about partnering with Life in Darkness? Any specific goals or programs you'd like to support?"></textarea>
         </div>
-        <button type="button">Submit Inquiry</button>
-      </div>
+        <button type="submit">Submit Inquiry</button>
+      </form>
     </div>
   </section>
 
@@ -223,10 +225,10 @@
   <section class="newsletter">
     <h3>Stay Connected to the Light</h3>
     <p>Mental health insights, community stories, and program updates, delivered with care.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Your email address" aria-label="Email address">
-      <button type="button">Subscribe</button>
-    </div>
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
   </section>
 </main>
 

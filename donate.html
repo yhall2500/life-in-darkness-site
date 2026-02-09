@@ -109,10 +109,10 @@
   <section class="newsletter">
     <h3>Stay Connected to the Light</h3>
     <p>Mental health insights, community stories, and program updates, delivered with care.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Your email address" aria-label="Email address">
-      <button type="button">Subscribe</button>
-    </div>
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter">
+      <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
   </section>
 
 </main>
