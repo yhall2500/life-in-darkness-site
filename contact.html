@@ -6,11 +6,9 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="description" content="Contact Life in Darkness. Reach out for support, partnership inquiries, or general questions. We're here to help.">
+  <meta name="description" content="Contact Life in Darkness — agency inquiries, youth cohort pre-registration, family formation pathways, foundation and institutional support. Canyon Lake, California.">
   <title>Contact Us | Life in Darkness</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -23,11 +21,10 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="help.html">Get Help</a></li>
     <li><a href="programs.html">Programs</a></li>
-    <li><a href="resources.html">Resources</a></li>
     <li><a href="donate.html">Give</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
-    <li><a href="tel:988" class="nav-cta">Crisis Line: 988</a></li>
+      <li><a href="tel:988" class="nav-cta">Crisis Line: 988</a></li>
   </ul>
   <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -43,7 +40,6 @@
 
   <!-- CRISIS BANNER -->
   <div class="crisis-banner">
-    <p>Need support now? If you're feeling overwhelmed by anxiety or depression, or if you're concerned about a friend or family member, help is always available. Call or text <a href="tel:988">988</a> for free, 24/7 confidential support. Text <strong>HELLO</strong> to <a href="sms:741741">741741</a> for free, immediate text support.</p>
   </div>
 
   <!-- CONTACT SECTION -->
@@ -55,8 +51,6 @@
           <div class="section-title" style="font-size: 2rem;">Reach Out Anytime</div>
           <div class="contact-details">
             <div class="contact-item">
-              <div class="contact-item-label">Address</div>
-              <p>8605 Santa Monica Blvd #210581<br>West Hollywood, CA 90069</p>
             </div>
             <div class="contact-item">
               <div class="contact-item-label">Phone</div>
@@ -87,8 +81,25 @@
               <input type="email" id="email" name="email" placeholder="Your email address" required>
             </div>
             <div class="form-group">
+              <label for="inquiry">I'm reaching out as...</label>
+              <select id="inquiry" name="inquiry" required style="width:100%;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
+                <option value="">Select your inquiry type</option>
+                <option value="agency">Agency / Department Leader (first responder formation)</option>
+                <option value="youth">Parent / Guardian (youth founding cohort pre-registration)</option>
+                <option value="participant">Individual / Family (formation pathways)</option>
+                <option value="funder">Foundation / Funder / Institutional Inquiry</option>
+                <option value="faith">Faith Community / Church Partnership</option>
+                <option value="volunteer">Volunteer / Serve</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+            <div class="form-group" style="display:flex;align-items:flex-start;gap:.5rem;">
+              <input type="checkbox" id="consent" name="consent" required style="margin-top:4px;width:auto;">
+              <label for="consent" style="font-size:.8rem;color:var(--text-mid);">I consent to Life in Darkness collecting and storing the information submitted in this form. See our <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a>.</label>
             </div>
             <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
           </form>
@@ -97,29 +108,28 @@
     </div>
   </section>
 
-  <!-- WAYS TO CONNECT -->
+  <!-- CRISIS RESOURCES -->
   <section class="section section-dark">
     <div class="container" style="text-align: center;">
-      <div class="section-label">Other Ways to Connect</div>
-      <div class="section-title">We're Here However You Need Us</div>
-      <div class="pillars-grid" style="margin-top: 2.5rem;">
+      <div class="section-label">Crisis Resources</div>
+      <div class="section-title">If You Need Help Right Now</div>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Life in Darkness builds capacity upstream of crisis. If you or someone you know is in acute crisis, please contact these verified resources immediately.</p>
+      <div class="pillars-grid" style="margin-top: 2.5rem; grid-template-columns: repeat(2, 1fr);">
         <div class="pillar-card">
-          <div class="pillar-icon">⟡</div>
-          <h3>Crisis Support</h3>
-          <p>If you or someone you know is in immediate crisis, call or text <strong>988</strong> — the Suicide &amp; Crisis Lifeline is free, confidential, and available 24/7.</p>
-          <a href="tel:988" class="btn-primary" style="display: inline-block; margin-top: 0.5rem; background: var(--white); color: #c44040; border: 1px solid #c44040;">Call 988 Now</a>
+          <h3>988 Suicide &amp; Crisis Lifeline</h3>
+          <p>Call or text <strong><a href="tel:988" style="color:var(--lid-green);">988</a></strong><br>Available 24/7.</p>
         </div>
         <div class="pillar-card">
-          <div class="pillar-icon">◈</div>
-          <h3>Program Inquiries</h3>
-          <p>Interested in our programs for yourself, your family, or your community? Reach out and we'll connect you with the right pathway.</p>
-          <a href="mailto:Contact@lifeindarkness.org?subject=Program Inquiry" class="btn-primary" style="display: inline-block; margin-top: 0.5rem; background: var(--lid-green); color: var(--white);">Inquire About Programs</a>
+          <h3>Crisis Text Line</h3>
+          <p>Text <strong>HOME</strong> to <strong><a href="sms:741741" style="color:var(--lid-green);">741741</a></strong><br>24/7 text-based crisis support.</p>
         </div>
         <div class="pillar-card">
-          <div class="pillar-icon">◇</div>
-          <h3>Partnerships &amp; Giving</h3>
-          <p>Want to support our mission through corporate partnership, faith community collaboration, or a major gift? Let's talk.</p>
-          <a href="mailto:Contact@lifeindarkness.org?subject=Partnership Inquiry" class="btn-primary" style="display: inline-block; margin-top: 0.5rem; background: var(--lid-green); color: var(--white);">Discuss Partnership</a>
+          <h3>SAMHSA National Helpline</h3>
+          <p>Call <strong><a href="tel:1-800-662-4357" style="color:var(--lid-green);">1-800-662-4357</a></strong><br>Free referrals and information, 24/7.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>Riverside County Crisis Line</h3>
+          <p>Call <strong><a href="tel:951-686-7450" style="color:var(--lid-green);">951-686-7450</a></strong><br>Local crisis support for Riverside County.</p>
         </div>
       </div>
     </div>
@@ -133,7 +143,7 @@
         <div class="bridge-logo-sub">Emotional &amp; Cognitive Wealth Advisors</div>
       </div>
       <div class="bridge-text">
-        <p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. The result: a greater share of every donor dollar goes directly to program delivery and community access. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p>
+        <p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p>
       </div>
     </div>
   </section>
@@ -157,23 +167,18 @@
         <div class="nav-logo-icon" style="width: 24px; height: 36px;"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div>
         <div class="nav-logo-text" style="font-size: 1.1rem;">Life in <span>Darkness</span></div>
       </div>
-      <p>An independent 501(c)(3) nonprofit delivering evidence-based emotional and cognitive wellness programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p>
+      <p>An independent 501(c)(3) nonprofit delivering emotional and cognitive capacity programs to the communities that need them most. Core frameworks licensed from EQGenix Inc.</p>
     </div>
     <div class="footer-col">
-      <h4>Programs</h4>
-      <a href="programs.html#suicide-prevention">Suicide Prevention</a>
-      <a href="programs.html#grief-recovery">Grief Recovery</a>
-      <a href="programs.html#family-healing">Family Healing</a>
-      <a href="programs.html#youth-resiliency">Youth Resiliency</a>
-      <a href="programs.html#addiction-support">Addiction Support</a>
+      <h4>Who We Build</h4>
+      <a href="programs.html#respond">Those Who Respond</a>
+      <a href="programs.html#rising">Those Who Are Rising</a>
+      <a href="programs.html#hold-the-line">Those Who Hold the Line</a>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
-      <a href="donate.html">Donate</a>
+      <a href="donate.html">Give</a>
       <a href="volunteer.html">Volunteer</a>
-      <a href="partners.html">Corporate Partners</a>
-      <a href="resources.html#community">Community Forum</a>
-      <a href="faith.html">Faith Communities</a>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
@@ -184,7 +189,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2024 Life in Darkness. All rights reserved. EIN: 33-1336378</p>
+    <p>&copy; 2026 Life in Darkness. All rights reserved. EIN: 33-1336378</p>
     <div class="footer-powered">
       Core frameworks licensed from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a> &middot; Built, Not Downloaded.&trade;
     </div>

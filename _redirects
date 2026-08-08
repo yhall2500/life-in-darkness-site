@@ -1,0 +1,4 @@
+/give /donate.html 301
+/serve /volunteer.html 301
+/partners /donate.html 301!
+/partners.html /donate.html 301!

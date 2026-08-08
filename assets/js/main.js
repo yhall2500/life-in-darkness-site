@@ -163,3 +163,32 @@
     });
   });
 })();
+
+/* ═══════════════════════════════════════
+   BEHIND BOTH BADGES COUNTDOWN
+   ═══════════════════════════════════════ */
+(function() {
+  var target = new Date('2026-09-11T18:00:00-07:00').getTime();
+  var days = document.getElementById('cd-days');
+  var hours = document.getElementById('cd-hours');
+  var min = document.getElementById('cd-min');
+  var sec = document.getElementById('cd-sec');
+  if (!days) return;
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function update() {
+    var now = Date.now();
+    var diff = target - now;
+    if (diff <= 0) {
+      days.textContent = '0'; hours.textContent = '0'; min.textContent = '0'; sec.textContent = '0';
+      return;
+    }
+    days.textContent = Math.floor(diff / 86400000);
+    hours.textContent = Math.floor((diff % 86400000) / 3600000);
+    min.textContent = Math.floor((diff % 3600000) / 60000);
+    sec.textContent = Math.floor((diff % 60000) / 1000);
+  }
+  update();
+  if (!prefersReduced) setInterval(update, 1000);
+})();
