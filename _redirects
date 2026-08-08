@@ -1,4 +1,9 @@
-/give /donate.html 301
-/serve /volunteer.html 301
-/partners /donate.html 301!
-/partners.html /donate.html 301!
+/donate /give.html 301
+/donate.html /give.html 301
+/volunteer /serve.html 301
+/volunteer.html /serve.html 301
+/partners /give.html 301!
+/partners.html /give.html 301!
+/resources /index.html 301
+/faith /index.html 301
+/faith-communities /index.html 301

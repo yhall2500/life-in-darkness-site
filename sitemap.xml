@@ -4,10 +4,8 @@
   <url><loc>https://www.lifeindarkness.org/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.lifeindarkness.org/programs</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.lifeindarkness.org/help</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.lifeindarkness.org/donate</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.lifeindarkness.org/give</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.lifeindarkness.org/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.lifeindarkness.org/volunteer</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.lifeindarkness.org/resources</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.lifeindarkness.org/faith</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.lifeindarkness.org/serve</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.lifeindarkness.org/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
