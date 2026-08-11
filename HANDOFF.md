@@ -1,7 +1,18 @@
 # Life in Darkness — Handoff Report
 
 **Generated:** August 8, 2026
-**Brief:** v2.0 + Amendments v2.1, v2.2, A11-R, v2.3
+**Brief:** v2.0 + Amendments v2.1, v2.2, A11-R, v2.3, **v2.4 (applied)**
+
+## v2.4 COMPLIANCE RECEIPT — August 8, 2026
+
+- F1–F3: programs.html three doors rewritten to the who/barrier/outcome/attribution model
+- F5: bridge block rewritten on all pages; "Wealth Advisors" sub-label deleted; link text is "EQGenix Inc." (attribution only)
+- 5.5: Mission-Ready Civilian™ page deleted; zero MRC references on property
+- 9.15: all curriculum internals purged (module counts, hours, LMS, assessment structure)
+- POST language: permitted sentence only, 3 occurrences (programs, respond, sovereign-shield)
+- F7: /accountability built with required verbatim blocks; items 4–5 remain [VERIFY] as HTML comments in accountability.html
+- F8: all verification greps return zero (visible copy; HTML value= attributes and form plumbing excluded)
+- EQGenix source pages moved out of the property to /reference (do not deploy)
 
 ---
 

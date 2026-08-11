@@ -34,16 +34,23 @@
       navLinks.classList.toggle('mobile-open');
     });
 
-    // Close mobile menu when a link is clicked
+    // Close mobile menu when a navigation link is clicked —
+    // but NOT the "Our Work" accordion trigger, which opens/closes in place
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
+        if (window.innerWidth <= 1140 && link.hasAttribute('aria-haspopup')) return;
         navLinks.classList.remove('mobile-open');
       });
     });
 
-    // Close on resize to desktop
+    // Close only when actually crossing into desktop width.
+    // Mobile browsers fire resize when the URL bar shows/hides on scroll,
+    // so we track width and ignore height-only changes.
+    var lastWidth = window.innerWidth;
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      if (window.innerWidth > 1140) {
         navLinks.classList.remove('mobile-open');
       }
     });
@@ -191,4 +198,51 @@
   }
   update();
   if (!prefersReduced) setInterval(update, 1000);
+})();
+
+
+/* ═══ SOLICITATION GATE (sitewide) ═══ */
+(function(){
+  var cfg = window.LID_CONFIG || {};
+  if (cfg.SOLICITATION_ENABLED) return;
+  document.querySelectorAll('a[href*="qgiv.com"], a[href*="donate"], a[href*="give.html"]').forEach(function(a){
+    a.href = 'contact.html';
+    a.removeAttribute('target'); a.removeAttribute('rel');
+  });
+})();
+
+
+/* ═══ ARIA STATE ═══ */
+(function(){
+  var toggle = document.getElementById('mobileToggle');
+  var links = document.querySelector('.nav-links');
+  if (toggle) {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.addEventListener('click', function(){
+      toggle.setAttribute('aria-expanded', links && links.classList.contains('mobile-open') ? 'true' : 'false');
+    });
+  }
+  document.querySelectorAll('.nav-drop').forEach(function(drop){
+    var trigger = drop.querySelector('a[aria-haspopup]');
+    if (!trigger) return;
+    function set(v){ trigger.setAttribute('aria-expanded', v); }
+    drop.addEventListener('mouseenter', function(){ set('true'); });
+    drop.addEventListener('mouseleave', function(){ set('false'); });
+    drop.addEventListener('focusin', function(){ set('true'); });
+    drop.addEventListener('focusout', function(){ set('false'); });
+  });
+})();
+
+/* ═══ MOBILE ACCORDION: Our Work starts closed ═══ */
+(function(){
+  document.querySelectorAll('.nav-drop').forEach(function(drop){
+    var trigger = drop.querySelector('a[aria-haspopup]');
+    if (!trigger) return;
+    trigger.addEventListener('click', function(e){
+      if (window.innerWidth > 1140) return; // desktop hover behavior untouched
+      e.preventDefault();
+      var open = drop.classList.toggle('drop-open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
 })();

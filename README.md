@@ -2,7 +2,7 @@
 
 **Independent 501(c)(3) · Canyon Lake, California**
 
-An independent nonprofit building emotional and cognitive capacity upstream of crisis — formation for first responders, youth, families, survivors, and veterans.
+An independent nonprofit building emotional and cognitive capacity upstream of crisis — formation for first responders, youth, families, survivors, and caregivers.
 
 ## Deployment
 

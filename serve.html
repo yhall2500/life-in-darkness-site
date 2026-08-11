@@ -6,7 +6,16 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <meta name="description" content="Volunteer with Life in Darkness. Use your time, skills, and compassion to help deliver emotional capacity programs to communities in need.">
+  <meta property="og:title" content="Volunteer | Life in Darkness">
+  <meta property="og:description" content="Volunteer with Life in Darkness. Use your time, skills, and compassion to help deliver emotional capacity programs to communities in need.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.lifeindarkness.org/assets/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Volunteer | Life in Darkness">
+  <meta name="twitter:description" content="Volunteer with Life in Darkness. Use your time, skills, and compassion to help deliver emotional capacity programs to communities in need.">
+  <meta name="twitter:image" content="https://www.lifeindarkness.org/assets/images/og-image.jpg">
   <title>Volunteer | Life in Darkness</title>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -36,7 +45,8 @@
   </style>
 </head>
 <body>
-<div style="display:flex;justify-content:center;align-items:center;gap:6px;padding:8px 24px;background:#EEF3E7;border-bottom:1px solid #DCE3D4;font-size:11px;color:#4A5844;">In crisis? Call or text <a href="tel:988" style="color:#33532E;font-weight:600;border-bottom:1px solid rgba(78,116,67,0.5);">988</a>.</div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="crisis-bar" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:flex;justify-content:center;align-items:center;gap:6px;padding:6px 24px;background:#EEF3E7;border-bottom:1px solid #DCE3D4;font-size:11px;color:#4A5844;">In crisis? Call or text <a href="tel:988" style="color:#33532E;font-weight:600;">988</a>.</div>
 <nav class="nav" id="mainNav">
   <a href="index.html" class="nav-logo">
     <div class="nav-logo-icon"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div>
@@ -45,58 +55,65 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="help.html">Get Help</a></li>
-    <li><a href="programs.html">Programs</a></li>
-    <li><a href="give.html">Give</a></li>
+    <li class="nav-drop">
+      <a href="programs.html" aria-haspopup="true" aria-expanded="false">Our Work <span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-drop-menu">
+        <div class="nav-drop-col">
+          <span class="nav-drop-label">Three Doors · Five Programs</span>
+          <a href="programs.html">All Programs<small>The full portfolio</small></a>
+          <a href="respond.html">Those Who Respond<small>Sovereign Shield™ · Sovereign Station™</small></a>
+          <a href="rising.html">Those Who Are Rising<small>Grit to Genius™ · Ages 12–17</small></a>
+          <a href="hold-the-line.html">Those Who Hold the Line<small>Mission-Ready Civilian™ · Sacred Deposits™</small></a>
+          <span class="nav-drop-attr">Curriculum licensed from EQGenix Inc.</span>
+        </div>
+      </div>
+    </li>
+    <li><a href="lounge.html">The Lounge</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="partner.html" class="active">Partner</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
 
-<main>
+<main id="main">
   <section class="page-hero">
-    <div class="section-label">Make a Difference</div>
+    <div class="section-label">Serve</div>
     <h1>Volunteer With <em>Us</em></h1>
-    <p>Your time, skills, and compassion can help deliver emotional capacity programs to the communities that need them most.</p>
+    <p>Formation is delivered by people. Every role below supports structured programs — with one screening standard across all of them.</p>
   </section>
 
   <section class="section section-warm">
     <div class="container" style="text-align:center;">
-      <div class="section-label">Why Volunteer</div>
-      <div class="section-title">Your Presence Changes Lives</div>
-      <p class="section-desc" style="max-width:650px;margin-left:auto;margin-right:auto;">Every program we deliver depends on people who show up. Not with perfection, but with presence. Whether you have professional expertise or simply a willing heart, there is a place for you here.</p>
-      </div>
+      <div class="section-label">The Standard</div>
+      <h2 class="section-title">One Screening Standard. Every Role.</h2>
+      <p class="section-desc" style="max-width:650px;margin-left:auto;margin-right:auto;">Every volunteer in any role — program-facing or not — completes background check and LiveScan fingerprint screening, reference checks, and a code of conduct. Volunteers in contact with youth or families additionally complete mandated reporter training. Formation roles receive structured training before serving a cohort.</p>
     </div>
   </section>
 
   <section class="section section-dark">
     <div class="container" style="text-align:center;">
       <div class="section-label">Opportunities</div>
-      <div class="section-title">Ways to Serve</div>
-      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Choose the role that fits your gifts, availability, and passion.</p>
+      <h2 class="section-title">Ways to Serve</h2>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Choose the role that fits your skills and availability.</p>
       <div class="vol-roles" style="text-align:left;">
         <div class="vol-card">
           <div class="vol-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
           <h3>Grief Formation Guide</h3>
-          <p>Support small group formation sessions using structured curriculum. Training provided.</p>
+          <p>Support small-group grief formation sessions using structured curriculum. Structured training and screening required before serving.</p>
           <div class="vol-commitment">4 hours/week · one cohort cycle</div>
         </div>
         <div class="vol-card">
           <div class="vol-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <h3>Family Formation Mentor</h3>
-          <p>Walk alongside blended families navigating the challenges of merging households. Share lived experience and provide encouragement.</p>
+          <p>Support families in structured formation programming for blended-household transitions. Screening and training required.</p>
           <div class="vol-commitment">2 hours/week ongoing</div>
-        </div>
-        <div class="vol-card">
-          <div class="vol-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-          <h3>Veteran Formation Mentor</h3>
-          <p>Walk alongside veterans navigating civilian identity through structured formation. Military experience preferred.</p>
-          <div class="vol-commitment">3 hours/week for 12 weeks</div>
         </div>
         <div class="vol-card">
           <div class="vol-card-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
           <h3>Faith Community Liaison</h3>
-          <p>Bridge the gap between your church and our programs. Help connect congregations with grief recovery and family healing resources.</p>
+          <p>Connect your congregation with Life in Darkness formation programming and workshop cohorts.</p>
           <div class="vol-commitment">Flexible schedule</div>
         </div>
         <div class="vol-card">
@@ -122,20 +139,19 @@
         <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
         <h3>Apply to Volunteer</h3>
         <div class="form-row">
-          <div><label>First Name</label><input type="text" name="firstName" placeholder="First name" required></div>
-          <div><label>Last Name</label><input type="text" name="lastName" placeholder="Last name" required></div>
+          <div><label>First Name</label><input type="text" name="firstName" placeholder="First name" required aria-label="First name"></div>
+          <div><label>Last Name</label><input type="text" name="lastName" placeholder="Last name" required aria-label="Last name"></div>
         </div>
         <div class="form-row">
-          <div><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
-          <div><label>Phone</label><input type="tel" name="phone" placeholder="(000) 000-0000"></div>
+          <div><label>Email</label><input type="email" name="email" placeholder="your@email.com" required aria-label="your@email.com"></div>
+          <div><label>Phone</label><input type="tel" name="phone" placeholder="(000) 000-0000" aria-label="(000) 000-0000"></div>
         </div>
         <div class="form-full">
           <label>Area of Interest</label>
-          <select name="interest" required>
+          <select name="interest" required aria-label="Area of interest">
             <option value="">Select a volunteer role...</option>
             <option>Grief Formation Guide</option>
             <option>Family Formation Mentor</option>
-            <option>Veteran Formation Mentor</option>
             <option>Faith Community Liaison</option>
             <option>Digital &amp; Creative Support</option>
             <option>Community Engagement Support</option>
@@ -144,9 +160,10 @@
         </div>
         <div class="form-full">
           <label>Tell Us About Yourself</label>
-          <textarea name="about" placeholder="Share a bit about your background, what drew you to Life in Darkness, and how you hope to serve..." required></textarea>
+          <textarea name="about" placeholder="Share a bit about your background, what drew you to Life in Darkness, and how you hope to serve..." required aria-label="Share a bit about your background, what drew you to Life in Darkness, and how you hope to serve"></textarea>
         </div>
-        <div class="form-full" style="display:flex;align-items:flex-start;gap:.5rem;margin-top:1rem;"><input type="checkbox" name="consent" required style="margin-top:4px;width:auto;"><label style="font-size:.8rem;color:var(--text-mid);">I consent to Life in Darkness collecting and storing the information submitted in this form. See our <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a>.</label></div>
+        <div class="form-full" style="display:flex;align-items:flex-start;gap:.5rem;margin-top:1rem;"><input type="checkbox" name="consent" id="consent-1" required style="margin-top:4px;width:auto;">
+              <label for="consent-1" style="font-size:.8rem;color:var(--text-mid);">I consent to Life in Darkness collecting and storing the information submitted in this form. See our <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a>.</label></div>
         <button type="submit">Submit Application</button>
       </form>
     </div>
@@ -156,24 +173,26 @@
     <div class="bridge-inner">
       <div>
         <div class="bridge-logo">EQGenix</div>
-        <div class="bridge-logo-sub">Emotional &amp; Cognitive Wealth Advisors</div>
       </div>
       <div class="bridge-text">
-        <p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p>
+        <p>Life in Darkness is an independent 501(c)(3). The curricula and instruments it delivers are the intellectual property of <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, licensed to Life in Darkness under an agreement approved by the board. Two organizations. Two missions. Independent governance, openly disclosed.</p>
       </div>
     </div>
   </section>
 
   <section class="newsletter">
     <h3>Stay Connected to the Light</h3>
-    <p>Mental health insights, community stories, and program updates, delivered with care.</p>
+    <p>Field notes, program updates, and community stories, delivered with care.</p>
     <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter">
       <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
       <button type="submit">Subscribe</button>
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#faf8f4;white-space:nowrap;text-align:left;cursor:pointer;"><input type="checkbox" name="privacy-consent" required style="flex:none;width:14px;height:14px;margin:0;accent-color:#c8a45e;">I agree to the&nbsp;<a href="privacy.html" style="color:inherit;text-decoration:underline;">privacy policy</a>.</label>
+      
     </form>
   </section>
 </main>
 
+<script src="assets/js/site-config.js"></script>
 <script src="assets/js/main.js"></script>
 <footer class="footer">
   <div class="footer-grid">
@@ -186,19 +205,27 @@
     </div>
     <div class="footer-col">
       <h4>Who We Build</h4>
-      <a href="programs.html#respond">Those Who Respond</a>
-      <a href="programs.html#rising">Those Who Are Rising</a>
-      <a href="programs.html#hold-the-line">Those Who Hold the Line</a>
+      <a href="respond.html" style="font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,244,.55);margin-bottom:.4rem;">Those Who Respond</a>
+      <a href="sovereign-shield.html" style="color:#8fb3d9;">Sovereign Shield™</a>
+      <a href="sovereign-station.html" style="margin-bottom:1.1rem;color:#8fb3d9;">Sovereign Station™</a>
+      <a href="rising.html" style="font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,244,.55);margin-bottom:.4rem;">Those Who Are Rising</a>
+      <a href="grit-to-genius.html" style="margin-bottom:1.1rem;color:#8fb3d9;">Grit to Genius™</a>
+      <a href="hold-the-line.html" style="font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,244,.55);margin-bottom:.4rem;">Those Who Hold the Line</a>
+      <a href="mission-ready-civilians.html" style="color:#8fb3d9;">Mission-Ready Civilian™</a>
+      <a href="sacred-deposits-workshops.html" style="color:#8fb3d9;">Sacred Deposits™</a>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
-      <a href="give.html">Give</a>
+      <a href="partner.html">Partner</a>
       <a href="serve.html">Serve</a>
+      <a href="lounge.html">The Lounge</a>
+      <a href="resources.html">Resources</a>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <a href="help.html">Get Help Now</a>
       <a href="about.html">Our Story</a>
+      <a href="accountability.html">Accountability</a>
       <a href="contact.html">Contact Us</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>

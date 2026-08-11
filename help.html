@@ -6,13 +6,28 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <meta name="description" content="Find your formation pathway with Life in Darkness — first responder, youth, family, survivor, and veteran capacity building in Canyon Lake, California.">
+  <meta property="og:title" content="Get Help | Life in Darkness">
+  <meta property="og:description" content="Find your formation pathway with Life in Darkness — first responder, youth, family, survivor, and veteran capacity building in Canyon Lake, California.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.lifeindarkness.org/assets/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get Help | Life in Darkness">
+  <meta name="twitter:description" content="Find your formation pathway with Life in Darkness — first responder, youth, family, survivor, and veteran capacity building in Canyon Lake, California.">
+  <meta name="twitter:image" content="https://www.lifeindarkness.org/assets/images/og-image.jpg">
   <title>Get Help | Life in Darkness</title>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
+<style>
+.form-input{padding:.7rem 1rem;font-family:"DM Sans",sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);outline:none;transition:border-color .3s;}
+.form-input:focus{border-color:var(--lid-green);}
+@media(max-width:480px){div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}}
+</style>
 </head>
 <body>
-<div style="display:flex;justify-content:center;align-items:center;gap:6px;padding:8px 24px;background:#EEF3E7;border-bottom:1px solid #DCE3D4;font-size:11px;color:#4A5844;">In crisis? Call or text <a href="tel:988" style="color:#33532E;font-weight:600;border-bottom:1px solid rgba(78,116,67,0.5);">988</a>.</div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="crisis-bar" style="position:fixed;top:0;left:0;right:0;z-index:1001;display:flex;justify-content:center;align-items:center;gap:6px;padding:6px 24px;background:#EEF3E7;border-bottom:1px solid #DCE3D4;font-size:11px;color:#4A5844;">In crisis? Call or text <a href="tel:988" style="color:#33532E;font-weight:600;">988</a>.</div>
 <nav class="nav" id="mainNav">
   <a href="index.html" class="nav-logo">
     <div class="nav-logo-icon"><img src="assets/images/logo.png" alt="Life in Darkness" class="nav-logo-img"></div>
@@ -21,8 +36,22 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="help.html" class="active">Get Help</a></li>
-    <li><a href="programs.html">Programs</a></li>
-    <li><a href="give.html">Give</a></li>
+    <li class="nav-drop">
+      <a href="programs.html" aria-haspopup="true" aria-expanded="false">Our Work <span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-drop-menu">
+        <div class="nav-drop-col">
+          <span class="nav-drop-label">Three Doors · Five Programs</span>
+          <a href="programs.html">All Programs<small>The full portfolio</small></a>
+          <a href="respond.html">Those Who Respond<small>Sovereign Shield™ · Sovereign Station™</small></a>
+          <a href="rising.html">Those Who Are Rising<small>Grit to Genius™ · Ages 12–17</small></a>
+          <a href="hold-the-line.html">Those Who Hold the Line<small>Mission-Ready Civilian™ · Sacred Deposits™</small></a>
+          <span class="nav-drop-attr">Curriculum licensed from EQGenix Inc.</span>
+        </div>
+      </div>
+    </li>
+    <li><a href="lounge.html">The Lounge</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="partner.html">Partner</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -31,154 +60,178 @@
   </button>
 </nav>
 
-<main>
+<main id="main">
   <section class="page-hero">
     <div class="section-label">Connect With Us</div>
-    <h1>Find Your <em>Door</em></h1>
-    <p>Life in Darkness builds capacity upstream of crisis. Whether you serve, you are rising, or you hold the line — there is a formation pathway for you.</p>
+    <h1>How Can We <em>Help</em>?</h1>
+    <p>Select your door. Tell us who you are. A real person will follow up. If you are in crisis right now, the helplines below are available 24/7.</p>
   </section>
 
-  <div class="crisis-banner">
-  </div>
-
   <section class="section section-warm">
-    <div class="container" style="text-align:center;">
-      <div class="section-label">Formation Pathways</div>
-      <div class="section-title">How Can We Help?</div>
-      <div class="pillars-grid" style="margin-top: 2rem; grid-template-columns: 1fr;">
+    <div class="container" style="max-width:720px;">
+      <div class="section-label" style="text-align:center;">Formation Pathways</div>
+      <h2 class="section-title" style="text-align:center;">How Can We Help?</h2>
+      <p style="text-align:center;color:var(--text-mid);margin-bottom:2.5rem;">Select your door. Tell us who you are. A real person will follow up.</p>
 
-        <!-- DOOR 1: AGENCY -->
-        <div class="pillar-card" style="text-align:left;max-width:700px;margin:0 auto;width:100%;">
-          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;font-weight:300;color:var(--lid-green);">01</div>
-            <h3 style="margin:0;">I'm a First Responder or Agency Leader</h3>
-          </div>
-          <p>Sovereign Shield™ (law enforcement) and Sovereign Station™ (fire service) formation for your department. Dual-badge architecture built for Canyon Lake's founding public safety agencies.</p>
-          <form name="agency-inquiry" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field" style="margin-top:1.25rem;">
-            <input type="hidden" name="form-name" value="agency-inquiry">
-            <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
-              <input type="text" name="name" placeholder="Your name" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-              <input type="text" name="title" placeholder="Title / Rank" style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem;">
-              <input type="text" name="agency" placeholder="Agency / Department" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-              <input type="email" name="email" placeholder="Email" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-            </div>
-            <textarea name="message" placeholder="Tell us about your department and what you're looking for..." rows="3" style="width:100%;margin-top:.75rem;padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);resize:vertical;box-sizing:border-box;"></textarea>
-            <div style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;">
-              <input type="checkbox" name="consent" required style="margin-top:4px;width:auto;">
-              <label style="font-size:.75rem;color:var(--text-mid);">I consent to Life in Darkness collecting this information. <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a></label>
-            </div>
-            <button type="submit" class="btn-primary" style="margin-top:1rem;background:var(--lid-green);color:var(--white);border:none;padding:.75rem 2rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;cursor:pointer;">Submit Agency Inquiry</button>
-          </form>
-        </div>
-
-        <!-- DOOR 2: YOUTH PRE-REGISTRATION -->
-        <div class="pillar-card" style="text-align:left;max-width:700px;margin:0 auto;width:100%;">
-          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;font-weight:300;color:var(--lid-green);">02</div>
-            <h3 style="margin:0;">I'm a Parent or Youth</h3>
-          </div>
-          <p>The Grit to Genius™ founding cohort at Canyon Lake — ages 12–17, three age bands, twelve seats per band. Fall 2026 pre-registration open.</p>
-          <form name="youth-preregistration" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field" style="margin-top:1.25rem;">
-            <input type="hidden" name="form-name" value="youth-preregistration">
-            <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
-              <input type="text" name="parent-name" placeholder="Parent / Guardian name" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-              <input type="text" name="youth-name" placeholder="Youth's first name" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem;">
-              <input type="email" name="email" placeholder="Parent / Guardian email" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-              <select name="age-band" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-                <option value="">Age band</option>
-                <option value="12-13">12–13</option>
-                <option value="14-15">14–15</option>
-                <option value="16-17">16–17</option>
-              </select>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;">
-              <input type="checkbox" name="consent" required style="margin-top:4px;width:auto;">
-              <label style="font-size:.75rem;color:var(--text-mid);">I consent to Life in Darkness collecting this information. <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a></label>
-            </div>
-            <button type="submit" class="btn-primary" style="margin-top:1rem;background:var(--lid-green);color:var(--white);border:none;padding:.75rem 2rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;cursor:pointer;">Pre-Register</button>
-          </form>
-        </div>
-
-        <!-- DOOR 3: FAMILY / SURVIVOR / VETERAN -->
-        <div class="pillar-card" style="text-align:left;max-width:700px;margin:0 auto;width:100%;">
-          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;font-weight:300;color:var(--lid-green);">03</div>
-            <h3 style="margin:0;">I'm a Family Member, Survivor, or Veteran</h3>
-          </div>
-          <p>Formation for the households that carry the weight — grief, blended family, caregiver, and veteran capacity building pathways beginning in Canyon Lake.</p>
-          <form name="participant-inquiry" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field" style="margin-top:1.25rem;">
-            <input type="hidden" name="form-name" value="participant-inquiry">
-            <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
-              <input type="text" name="name" placeholder="Your name" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-              <input type="email" name="email" placeholder="Email" required style="padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);">
-            </div>
-            <select name="pathway" style="width:100%;margin-top:.75rem;padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);box-sizing:border-box;">
-              <option value="">What pathway are you interested in?</option>
-              <option value="grief">Grief and Loss Formation</option>
-              <option value="family">Blended Family / Family Formation</option>
-              <option value="caregiver">Caregiver Capacity Building</option>
-              <option value="veteran">Veteran Formation</option>
-              <option value="not-sure">Not sure yet</option>
-            </select>
-            <textarea name="message" placeholder="Anything you'd like us to know..." rows="3" style="width:100%;margin-top:.75rem;padding:.7rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;border:1px solid rgba(42,37,32,.12);border-radius:4px;background:var(--white);color:var(--text-dark);resize:vertical;box-sizing:border-box;"></textarea>
-            <div style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;">
-              <input type="checkbox" name="consent" required style="margin-top:4px;width:auto;">
-              <label style="font-size:.75rem;color:var(--text-mid);">I consent to Life in Darkness collecting this information. <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a></label>
-            </div>
-            <button type="submit" class="btn-primary" style="margin-top:1rem;background:var(--lid-green);color:var(--white);border:none;padding:.75rem 2rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;cursor:pointer;">Submit Inquiry</button>
-          </form>
-        </div>
-
+      <!-- DOOR SELECTOR -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(42,37,32,.1);border:1px solid rgba(42,37,32,.08);border-radius:4px;overflow:hidden;margin-bottom:2.5rem;">
+        <button onclick="showDoor(1)" id="door-btn-1" style="padding:1.25rem .75rem;background:var(--lid-green);color:var(--white);border:none;cursor:pointer;text-align:center;transition:all .3s;font-family:'DM Sans',sans-serif;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;line-height:1;">01</div>
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem;">First Responder</div>
+        </button>
+        <button onclick="showDoor(2)" id="door-btn-2" style="padding:1.25rem .75rem;background:var(--white);color:var(--text-dark);border:none;cursor:pointer;text-align:center;transition:all .3s;font-family:'DM Sans',sans-serif;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;line-height:1;">02</div>
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem;">Parent / Youth</div>
+        </button>
+        <button onclick="showDoor(3)" id="door-btn-3" style="padding:1.25rem .75rem;background:var(--white);color:var(--text-dark);border:none;cursor:pointer;text-align:center;transition:all .3s;font-family:'DM Sans',sans-serif;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;line-height:1;">03</div>
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem;">Family / Veteran</div>
+        </button>
       </div>
+
+      <!-- DOOR 1: AGENCY -->
+      <div id="door-1" class="door-panel" style="display:block;">
+        <div style="border-left:3px solid var(--lid-green);padding-left:1.25rem;margin-bottom:1.5rem;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin:0 0 .5rem;">Those Who Respond</h3>
+          <p style="font-size:.85rem;color:var(--text-mid);line-height:1.6;margin:0;">Sovereign Shield™ and Sovereign Station™ formation for your department. Dual-badge architecture for Canyon Lake's founding public safety agencies.</p>
+          <p style="font-size:.8rem;margin:.5rem 0 0;"><a href="sovereign-shield.html" style="color:var(--lid-green);">Sovereign Shield™</a> · <a href="sovereign-station.html" style="color:var(--lid-green);">Sovereign Station™</a></p>
+        </div>
+        <form name="agency-inquiry" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="agency-inquiry">
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+            <input type="text" name="name" placeholder="Your name" required class="form-input" aria-label="Your name">
+            <input type="text" name="title" placeholder="Title / Rank" class="form-input" aria-label="Title / Rank">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem;">
+            <input type="text" name="agency" placeholder="Agency / Department" required class="form-input" aria-label="Agency / Department">
+            <input type="email" name="email" placeholder="Email" required class="form-input" aria-label="Email">
+          </div>
+          <textarea name="message" placeholder="Tell us about your department..." rows="3" class="form-input" style="width:100%;margin-top:.75rem;resize:vertical;box-sizing:border-box;" aria-label="Tell us about your department"></textarea>
+          <div style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;">
+            <input type="checkbox" name="consent" id="consent-1" required style="margin-top:4px;width:auto;">
+              <label for="consent-1" style="font-size:.75rem;color:var(--text-mid);">I consent to Life in Darkness collecting this information. <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a></label>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top:1rem;width:100%;">Submit Agency Inquiry</button>
+        </form>
+      </div>
+
+      <!-- DOOR 2: YOUTH -->
+      <div id="door-2" class="door-panel" style="display:none;">
+        <div style="border-left:3px solid var(--lid-green);padding-left:1.25rem;margin-bottom:1.5rem;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin:0 0 .5rem;">Those Who Are Rising</h3>
+          <p style="font-size:.85rem;color:var(--text-mid);line-height:1.6;margin:0;">Grit to Genius™ founding cohort at Canyon Lake — ages 12–17, three age bands, twelve seats per band. Fall 2026.</p>
+          <p style="font-size:.8rem;margin:.5rem 0 0;"><a href="grit-to-genius.html" style="color:var(--lid-green);">Explore Grit to Genius™ →</a></p>
+        </div>
+        <form name="youth-preregistration" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="youth-preregistration">
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+            <input type="text" name="parent-name" placeholder="Parent / Guardian name" required class="form-input" aria-label="Parent / Guardian name">
+            <input type="text" name="youth-name" placeholder="Youth's first name" required class="form-input" aria-label="Youth's first name">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem;">
+            <input type="email" name="email" placeholder="Parent / Guardian email" required class="form-input" aria-label="Parent / Guardian email">
+            <select name="age-band" required class="form-input" aria-label="Age band">
+              <option value="">Age band</option>
+              <option value="12-13">12–13</option>
+              <option value="14-15">14–15</option>
+              <option value="16-17">16–17</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;">
+            <input type="checkbox" name="consent" id="consent-2" required style="margin-top:4px;width:auto;">
+              <label for="consent-2" style="font-size:.75rem;color:var(--text-mid);">I consent to Life in Darkness collecting this information. <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a></label>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top:1rem;width:100%;">Pre-Register</button>
+        </form>
+      </div>
+
+      <!-- DOOR 3: FAMILY / SURVIVOR / VETERAN -->
+      <div id="door-3" class="door-panel" style="display:none;">
+        <div style="border-left:3px solid var(--lid-green);padding-left:1.25rem;margin-bottom:1.5rem;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin:0 0 .5rem;">Those Who Hold the Line</h3>
+          <p style="font-size:.85rem;color:var(--text-mid);line-height:1.6;margin:0;">Formation for families, survivors, and veterans building the capacity to sustain themselves and each other under pressure.</p>
+        </div>
+        <form name="participant-inquiry" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="participant-inquiry">
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+            <input type="text" name="name" placeholder="Your name" required class="form-input" aria-label="Your name">
+            <input type="email" name="email" placeholder="Email" required class="form-input" aria-label="Email">
+          </div>
+          <select name="pathway" aria-label="Pathway of interest" class="form-input" style="width:100%;margin-top:.75rem;box-sizing:border-box;">
+            <option value="">What pathway interests you?</option>
+            <option value="grief">Grief and Loss Formation</option>
+            <option value="family">Blended Family / Family Formation</option>
+            <option value="caregiver">Caregiver Capacity Building</option>
+                        <option value="not-sure">Not sure yet</option>
+          </select>
+          <textarea name="message" placeholder="Anything you'd like us to know..." rows="3" class="form-input" style="width:100%;margin-top:.75rem;resize:vertical;box-sizing:border-box;" aria-label="Anything you'd like us to know"></textarea>
+          <div style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;">
+            <input type="checkbox" name="consent" id="consent-3" required style="margin-top:4px;width:auto;">
+              <label for="consent-3" style="font-size:.75rem;color:var(--text-mid);">I consent to Life in Darkness collecting this information. <a href="privacy.html" style="color:var(--lid-green);">Privacy Policy</a></label>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top:1rem;width:100%;">Submit Inquiry</button>
+        </form>
+      </div>
+
     </div>
   </section>
 
   <section class="section section-dark">
     <div class="container" style="text-align: center;">
       <div class="section-label">Immediate Resources</div>
-      <div class="section-title">Crisis Helplines: Free &amp; Confidential</div>
-      <div class="pillars-grid" style="margin-top: 2rem; ">
+      <h2 class="section-title">If You Need Help Right Now</h2>
+      <p class="section-desc" style="max-width:600px;margin-left:auto;margin-right:auto;">Life in Darkness builds capacity upstream of crisis — we do not provide crisis response. These lines do, around the clock.</p>
+      <div class="pillars-grid" style="margin-top: 2.75rem;">
         <div class="pillar-card" style="text-align: center;">
           <h3>Suicide &amp; Crisis Lifeline</h3>
-          <p>Call or text <strong>988</strong><br>Available 24/7, free and confidential</p>
+          <p>Call or text <a href="tel:988" style="color:var(--lid-green);font-weight:700;text-decoration:none;">988</a><br>Available 24/7</p>
         </div>
         <div class="pillar-card" style="text-align: center;">
           <h3>Crisis Text Line</h3>
-          <p>Text <strong>HOME to 741741</strong><br>24/7 support via text message</p>
+          <p>Text <strong>HOME</strong> to <a href="sms:741741" style="color:var(--lid-green);font-weight:700;text-decoration:none;">741741</a><br>24/7 support via text message</p>
         </div>
         <div class="pillar-card" style="text-align: center;">
           <h3>SAMHSA Helpline</h3>
-          <p>Call <strong>1-800-662-4357</strong><br>Substance abuse &amp; mental health referrals</p>
+          <p>Call <a href="tel:18006624357" style="color:var(--lid-green);font-weight:700;text-decoration:none;">1-800-662-4357</a><br>Substance abuse &amp; mental health referrals</p>
         </div>
       </div>
     </div>
   </section>
 
+  <script>
+  function showDoor(n) {
+    document.querySelectorAll('.door-panel').forEach(function(p){p.style.display='none';});
+    document.getElementById('door-'+n).style.display='block';
+    for(var i=1;i<=3;i++){
+      var btn=document.getElementById('door-btn-'+i);
+      if(i===n){btn.style.background='var(--lid-green)';btn.style.color='var(--white)';}
+      else{btn.style.background='var(--white)';btn.style.color='var(--text-dark)';}
+    }
+  }
+  </script>
+
   <section class="eqgenix-bridge">
     <div class="bridge-inner">
       <div>
         <div class="bridge-logo">EQGenix</div>
-        <div class="bridge-logo-sub">Emotional &amp; Cognitive Wealth Advisors</div>
       </div>
       <div class="bridge-text">
-        <p>Life in Darkness is an independent 501(c)(3) that licenses its core program frameworks from <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, meaning LID has access to rigorously developed methodology without the cost of building it from scratch. <a href="https://www.eqgenix.com" target="_blank" rel="noopener">Learn more about EQGenix &rarr;</a></p>
+        <p>Life in Darkness is an independent 501(c)(3). The curricula and instruments it delivers are the intellectual property of <a href="https://www.eqgenix.com" target="_blank" rel="noopener">EQGenix Inc.</a>, licensed to Life in Darkness under an agreement approved by the board. Two organizations. Two missions. Independent governance, openly disclosed.</p>
       </div>
     </div>
   </section>
 
   <section class="newsletter">
     <h3>Stay Connected to the Light</h3>
-    <p>Mental health insights, community stories, and program updates, delivered with care.</p>
+    <p>Field notes, program updates, and community stories, delivered with care.</p>
     <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form"><input type="hidden" name="form-name" value="newsletter">
       <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
       <button type="submit">Subscribe</button>
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#faf8f4;white-space:nowrap;text-align:left;cursor:pointer;"><input type="checkbox" name="privacy-consent" required style="flex:none;width:14px;height:14px;margin:0;accent-color:#c8a45e;">I agree to the&nbsp;<a href="privacy.html" style="color:inherit;text-decoration:underline;">privacy policy</a>.</label>
+      
     </form>
   </section>
 
@@ -195,19 +248,27 @@
     </div>
     <div class="footer-col">
       <h4>Who We Build</h4>
-      <a href="programs.html#respond">Those Who Respond</a>
-      <a href="programs.html#rising">Those Who Are Rising</a>
-      <a href="programs.html#hold-the-line">Those Who Hold the Line</a>
+      <a href="respond.html" style="font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,244,.55);margin-bottom:.4rem;">Those Who Respond</a>
+      <a href="sovereign-shield.html" style="color:#8fb3d9;">Sovereign Shield™</a>
+      <a href="sovereign-station.html" style="margin-bottom:1.1rem;color:#8fb3d9;">Sovereign Station™</a>
+      <a href="rising.html" style="font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,244,.55);margin-bottom:.4rem;">Those Who Are Rising</a>
+      <a href="grit-to-genius.html" style="margin-bottom:1.1rem;color:#8fb3d9;">Grit to Genius™</a>
+      <a href="hold-the-line.html" style="font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,248,244,.55);margin-bottom:.4rem;">Those Who Hold the Line</a>
+      <a href="mission-ready-civilians.html" style="color:#8fb3d9;">Mission-Ready Civilian™</a>
+      <a href="sacred-deposits-workshops.html" style="color:#8fb3d9;">Sacred Deposits™</a>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
-      <a href="give.html">Give</a>
+      <a href="partner.html">Partner</a>
       <a href="serve.html">Serve</a>
+      <a href="lounge.html">The Lounge</a>
+      <a href="resources.html">Resources</a>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <a href="help.html">Get Help Now</a>
       <a href="about.html">Our Story</a>
+      <a href="accountability.html">Accountability</a>
       <a href="contact.html">Contact Us</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>
@@ -220,6 +281,7 @@
   </div>
 </footer>
 
+<script src="assets/js/site-config.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
