@@ -66,6 +66,11 @@
   to = "/partner.html"
   status = 200
 
+[[redirects]]
+  from = "/impact"
+  to = "/impact.html"
+  status = 200
+
 # Retired routes
 [[redirects]]
   from = "/donate"

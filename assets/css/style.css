@@ -1469,3 +1469,28 @@ h2.section-title { margin-top: 0; }
   .nav-drop:hover > a .nav-caret { transform: translateY(-1px); }
   .nav-drop.drop-open:hover > a .nav-caret { transform: translateY(-1px) rotate(180deg); }
 }
+
+/* ─── OVERSCROLL GROUND: rubber-band scroll on iOS revealed cream behind the
+   transparent nav, making the white logo invisible. Paint the html element
+   the hero/footer green so overscroll stays dark. ─── */
+html { background: #1a2e1a; }
+/* And give the fixed nav its own faint dark scrim so the logo and links
+   always sit on something dark, even before the .scrolled state kicks in. */
+.nav:not(.scrolled) {
+  background: linear-gradient(180deg, rgba(20,32,20,.55) 0%, rgba(20,32,20,0) 100%);
+}
+
+/* ─── REDUCED MOTION + FOCUS (brand brief §10) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--warm-gold, #c8a45e);
+  outline-offset: 2px;
+}
